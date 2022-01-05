@@ -7,8 +7,7 @@ INC_DIR = ./include
 LIB_DIR = ./libs
 SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
-LDFLAGS := -shared -L$(LIB_DIR)/
-# -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl
+LDFLAGS := -L$(LIB_DIR)/ -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl
 INCLUDEFLAGS := -I$(INC_DIR)/
 CPP_FLAGS := -Wall -g
 
@@ -47,4 +46,4 @@ clean:
 	rm $(BUILD_DIR)/* -f
 
 run:
-	sudo LD_LIBRARY_PATH=LD_LIBRARY_PATH:$(LIB_DIR)/ ./build/$(PROJECT_NAME) 
+	sudo LD_LIBRARY_PATH=LD_LIBRARY_PATH:$(LIB_DIR)/ ./build/$(PROJECT_NAME)
