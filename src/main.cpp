@@ -9,6 +9,15 @@
 
 int main(void)
 {
-    std::cout << "Hello World!" << std::endl;
+    std::cout << "Starting..." << std::endl;
+
+    //InitGLFW
+    glfwInit();
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+
+
     return 0;
 }
