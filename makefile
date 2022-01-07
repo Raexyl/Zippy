@@ -1,4 +1,4 @@
-PROJECT_NAME := GLADtest
+PROJECT_NAME := LearnOpenGL
 
 #Directories
 BUILD_DIR := build
@@ -60,4 +60,4 @@ clean:
 	rm $(BUILD_DIR)/* -f
 
 run:
-	sudo ./build/$(PROJECT_NAME)
+	./build/$(PROJECT_NAME)

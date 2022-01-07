@@ -13,6 +13,15 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
+//Process Inputs
+void ProcessInput(GLFWwindow *window)
+{
+	if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(window, true);
+	}
+}
+
 int main(void)
 {
     std::cout << "Starting..." << std::endl;
@@ -47,11 +56,18 @@ int main(void)
 	//Main render loop
 	while(!glfwWindowShouldClose(window))
 	{
+		//Input
+		ProcessInput(window);
+
+		//Rendering
+		glClearColor(0.2f, 0.4f, 0.6f, 0.5f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		//Swap Buffers, Check events
     	glfwSwapBuffers(window);
     	glfwPollEvents();    
 	}
 
-
-	glfwTerminate();
+	glfwTerminate(); //Exit cleanly (de-allocating memory?)
     return 0;
 }
