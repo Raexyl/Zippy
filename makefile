@@ -59,5 +59,6 @@ clean:
 	rm $(OBJ_DIR)/* -f
 	rm $(BUILD_DIR)/* -f
 
+#DON'T USE THIS! must cd into build directory first
 run:
 	./build/$(PROJECT_NAME)
