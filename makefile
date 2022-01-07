@@ -5,14 +5,15 @@ BUILD_DIR := build
 OBJ_DIR := int
 SRC_DIR := src
 INC_DIR := ./include
-LIB_DIR := ./lib
+LIB_DIR := ./libs
 
 #Flags
-LDFLAGS := -L$(LIB_DIR)/ -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl #Libraries go here
-INCLUDEFLAGS := -I$(INC_DIR)/
+LIBS := -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl
+INCLUDEFLAGS := -I$(INC_DIR)
+LDFLAGS := -L$(LIB_DIR) $(LIBS)
 CPP_FLAGS := -Wall -g
 
-#What obj files do we need?
+#What .o files do we need for final exectuable?
 SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp) $(wildcard $(SRC_DIR)/*.c)
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(OBJ_FILES))
@@ -43,7 +44,7 @@ endif
 
 #link .o files
 $(PROJECT_NAME): $(OBJ_FILES) 				
-	g++ $(LDFLAGS) -o $@ $^
+	g++ -o $@ $^ $(LDFLAGS) 
 	mv $@ $(BUILD_DIR)/
 
 #compile .cpp files
@@ -59,4 +60,4 @@ clean:
 	rm $(BUILD_DIR)/* -f
 
 run:
-	sudo LD_LIBRARY_PATH=LD_LIBRARY_PATH:$(LIB_DIR)/ ./build/$(PROJECT_NAME)
+	sudo ./build/$(PROJECT_NAME)
