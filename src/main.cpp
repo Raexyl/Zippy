@@ -69,11 +69,18 @@ int main(void)
 	glViewport(0, 0, 800, 600);	//Establish co-ordinate system of window
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback); //Allow re-sizing
 
-	//Triangle Verts
+	//Rectangle Verts
 	float vertices[] = {
-    -0.5f, -0.5f, 0.0f,
-     0.5f, -0.5f, 0.0f,
-     0.0f,  0.5f, 0.0f
+    	 0.5f,  0.5f, 0.0f,  // top right
+    	 0.5f, -0.5f, 0.0f,  // bottom right
+    	-0.5f, -0.5f, 0.0f,  // bottom left
+    	-0.5f,  0.5f, 0.0f   // top left 
+	};
+
+	//Verts in order
+	unsigned int indices[] = {
+		0, 1, 3,
+		1, 2, 3
 	};
 
 	//We need a VAO
@@ -84,12 +91,18 @@ int main(void)
 	//Creating GL Buffer Object
 	unsigned int VBO; //OpenGL ID
 	glGenBuffers(1, &VBO);
-
-	//Binding it
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-	//Writing to it
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+	//And an EBO
+	unsigned int EBO;
+	glGenBuffers(1, &EBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+	//Tell OpenGL how our vertices are formatted
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);  
 
 	//Compiling Vertex Shader
 	unsigned int vertexShader;
@@ -139,10 +152,6 @@ int main(void)
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
-	//Tell OpenGL how our vertices are formatted
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);  
-
 	//Main render loop
 	while(!glfwWindowShouldClose(window))
 	{
@@ -156,7 +165,8 @@ int main(void)
 		//Render
 		glUseProgram(shaderProgram); //Select shader
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		glBindVertexArray(0);
 
 		//Swap Buffers, Check events
     	glfwSwapBuffers(window);
