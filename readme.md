@@ -1,3 +1,4 @@
-Testing only GLAD and GLFW3. No extras.
+A project that follows https://learnopengl.com/
+Made for 64-bit linux.
 
-May turn into another project, following https://learnopengl.com/
+May be made cross-platform later???
