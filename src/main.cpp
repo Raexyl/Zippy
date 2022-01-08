@@ -9,7 +9,7 @@
 #include "GLFW/glfw3.h"
 
 //In-project files
-#include "shader.h"
+#include "Shader.h"
 
 //Shaders
 const char *vertexShaderPath = "../shaders/shader.vs";

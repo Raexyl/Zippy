@@ -1,4 +1,4 @@
-PROJECT_NAME := LearnOpenGL
+PROJECT_NAME := Zippy
 
 #Directories
 BUILD_DIR := build
