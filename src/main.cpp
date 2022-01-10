@@ -2,18 +2,16 @@
 
 //Logging (& debugging)
 #include <iostream>
-#include <math.h>
 
 //Graphics
-#include "glad/glad.h"
-#include "GLFW/glfw3.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 //In-project files
 #include "Shader.h"
 
-//Shaders
-const char *vertexShaderPath = "../shaders/shader.vs";
-const char *fragmentShaderPath = "../shaders/shader.fs";
+//Types of rendering
+#include "Line.h"
 
 //Callback to allow re-sizing
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -100,7 +98,13 @@ int main(void)
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3* sizeof(float)));
 	glEnableVertexAttribArray(1); 
 
-	Shader shader(vertexShaderPath, fragmentShaderPath);
+	//Compiling shaders...
+	std::cout << "Compiling Shaders..." << std::endl;
+	Shader shader("../shaders/shader.vs", "../shaders/shader.fs");
+	Shader lineShader("../shaders/lineShader.vs", "../shaders/lineShader.fs");
+
+	//Line test
+	Line myLine(glm::vec3(0.5f, 0.5f, 0.0f), glm::vec3(0.1f, 0.1f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), lineShader.ID);
 
 	//Main render loop
 	while(!glfwWindowShouldClose(window))
@@ -118,6 +122,8 @@ int main(void)
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
+
+		myLine.Draw();
 
 		//Swap Buffers, Check events
     	glfwSwapBuffers(window);
