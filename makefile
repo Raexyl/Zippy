@@ -4,8 +4,8 @@ PROJECT_NAME := Zippy
 BUILD_DIR := build
 OBJ_DIR := int
 SRC_DIR := src
-INC_DIR := ./include
-LIB_DIR := ./libs
+INC_DIR := ./vendor/includes
+LIB_DIR := ./vendor/libs
 
 #Flags
 LIBS := -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl
