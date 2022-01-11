@@ -27,13 +27,12 @@ Line::~Line()
     glDeleteProgram(shaderProgram);
 }
 
-int Line::Draw() 
+void Line::Draw() 
 {
     glUseProgram(shaderProgram);
 	UpdateColor(lineColor);
     glBindVertexArray(VAO);
     glDrawArrays(GL_LINES, 0, 2);
-    return 1;
 }
 
 void Line::SetColor(glm::vec4 color)

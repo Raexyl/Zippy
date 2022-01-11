@@ -4,7 +4,9 @@
 #include <glm/glm.hpp>
 #include <glad/glad.h>
 
-class Line {
+#include "RenderObject.h"
+
+class Line : RenderObject {
     unsigned int shaderProgram;
     unsigned int VBO, VAO;
 	glm::vec4 lineColor; 	//Works as a uniform
@@ -14,7 +16,7 @@ public:
     Line(glm::vec2 start, glm::vec2 end, glm::vec4 color, unsigned int shaderID);
 	~Line();
 
-    int Draw();
+    void Draw();
 	void SetColor(glm::vec4 color);
 	void SetPoints(glm::vec2 start, glm::vec2 end);
 
