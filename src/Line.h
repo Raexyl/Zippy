@@ -16,6 +16,7 @@ public:
 
     int Draw();
 	void SetColor(glm::vec4 color);
+	void SetPoints(glm::vec2 start, glm::vec2 end);
 
 private:
 		int UpdateColor(glm::vec4 color);

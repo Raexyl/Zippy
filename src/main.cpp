@@ -124,6 +124,9 @@ int main(void)
 		glBindVertexArray(0);
 
 		myLine.Draw();
+		float value = sin(glfwGetTime());
+		float valuecos = cos(glfwGetTime());
+		myLine.SetPoints(glm::vec2(0.0f, 0.0f), glm::vec2(value, valuecos));
 
 		//Swap Buffers, Check events
     	glfwSwapBuffers(window);
