@@ -2,10 +2,8 @@
 Basic 2D Rendering Engine
 
 Todo: -
- - Custom Vector Class? (steal from Snappy?)
- - Custom colour class?
- - Line Class
- - Renderer Class?
+ - Refine Line Class 
+	 - This is probably a template for all other classes now 
 
 Project Aims: -
  - Draw lines.

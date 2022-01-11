@@ -104,7 +104,7 @@ int main(void)
 	Shader lineShader("../shaders/lineShader.vs", "../shaders/lineShader.fs");
 
 	//Line test
-	Line myLine(glm::vec3(0.5f, 0.5f, 0.0f), glm::vec3(0.1f, 0.1f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), lineShader.ID);
+	Line myLine(glm::vec2(0.6f, 0.5f), glm::vec2(-0.4f, -0.8f), glm::vec4(0.0f, 1.0f, 1.0f, 1.0f), lineShader.ID);
 
 	//Main render loop
 	while(!glfwWindowShouldClose(window))
