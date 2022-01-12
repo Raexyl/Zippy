@@ -1,5 +1,9 @@
 #include "Shader.h"
 
+Shader::Shader()
+{
+}
+
 //Read, Compile and Link shaders from files.
 Shader::Shader(const char* vertexPath, const char* fragmentPath)
 {

@@ -1,6 +1,6 @@
 #include "Renderer.h"
 
-Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTitle)
+Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTitle, void (*RenderFunction)(void))
 {
 	std::cout << "Initialising GLFW..." << std::endl;
 
@@ -36,39 +36,15 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
 	//Compiling shaders...
 	std::cout << "Compiling Shaders..." << std::endl;
 	lineShader = Shader("../shaders/lineShader.vs", "../shaders/lineShader.fs");
+
+	Render = RenderFunction;
 }
 
 Renderer::~Renderer()
 {
 }
 
-void Renderer::Loop(void)
-{
-	while(!glfwWindowShouldClose(window))
-	{
-		ProcessInput();
-
-		//Clear colour
-		glClearColor(0.2f, 0.4f, 0.6f, 0.5f); //State-setting
-		glClear(GL_COLOR_BUFFER_BIT); //State-using
-
-		//Render all objects
-		for(unsigned int i = 0; i < noObjects; i++)
-		{
-			objects[i]->Draw();
-		}
-
-		//Swap Buffers, Check events
-    	glfwSwapBuffers(window);
-    	glfwPollEvents();  
-	}  
-}
-
-void Renderer::AddRenderObject(RenderObject* renderObject)
-{
-	if(noObjects >= 100) {return;};
-	objects[noObjects++] = renderObject;
-}
+/* ----- Render Loop Methods ----- */
 
 //Process Inputs
 void Renderer::ProcessInput()
@@ -77,6 +53,40 @@ void Renderer::ProcessInput()
 	{
 		glfwSetWindowShouldClose(window, true);
 	}
+}
+
+void Renderer::SwapBuffers()
+{
+	//Swap Buffers
+    glfwSwapBuffers(window);
+}
+
+void Renderer::ClearColor(glm::vec4 color)
+{
+	//Clear colour
+	glClearColor(color.x, color.y, color.z, color.w); //State-setting
+	glClear(GL_COLOR_BUFFER_BIT); //State-using
+}
+
+int Renderer::WindowShouldClose()
+{
+	return glfwWindowShouldClose(window);
+}
+
+/* ----- Draw things! ----- */
+
+void Renderer::DrawLine(Line* line)
+{
+	//Load shader
+	glUseProgram(lineShader.ID);
+
+	//Update color
+	int vertexColorLocation = glGetUniformLocation(lineShader.ID, "ourColor");
+	glm::vec4 ourLineColor = line->GetColor();
+	glUniform4f(vertexColorLocation, ourLineColor.x, ourLineColor.y, ourLineColor.z, ourLineColor.w);
+	
+    glBindVertexArray(line->GetVAOID());
+    glDrawArrays(GL_LINES, 0, 2);
 }
 
 /* ----- GLFW CALLBACKS! ----- */

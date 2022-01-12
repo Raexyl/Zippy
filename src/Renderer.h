@@ -15,24 +15,28 @@
 
 class Renderer
 {
-	RenderObject* objects[100]; // Array of RenderObjects
-	unsigned int noObjects = 0;
+	void (*Render)(void);
 
 	//Default shaders
 	Shader lineShader;
 
+	//Window details
 	GLFWwindow* window;
 	unsigned int width, height;
 
 	public:
-		Renderer(unsigned int width, unsigned int height, const char* windowTitle);
+		Renderer(unsigned int width, unsigned int height, const char* windowTitle, void (*RenderFunction)(void));
 		~Renderer();
 
-		void Loop(void); //Enter rendering loop;
-	
-	private:
-		void AddRenderObject(RenderObject* renderObject);
+		//Render Loop methods
 		void ProcessInput();
+		void SwapBuffers();
+		void ClearColor(glm::vec4 color);
+		int WindowShouldClose();
+
+		//Render things!
+		void DrawLine(Line* line);
+
 };
 
 /* ----- GLFW CALLBACKS! ----- */

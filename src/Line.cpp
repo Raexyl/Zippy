@@ -1,11 +1,10 @@
 #include "Line.h"
 
-Line::Line(glm::vec2 start, glm::vec2 end, glm::vec4 color, unsigned int shaderID)
+Line::Line(glm::vec2 start, glm::vec2 end, glm::vec4 color)
 {
 	vertices[0] = start;
 	vertices[1] = end;
 	lineColor = color;
-	shaderProgram = shaderID;
        
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
@@ -24,20 +23,16 @@ Line::~Line()
 {
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
-    glDeleteProgram(shaderProgram);
-}
-
-void Line::Draw() 
-{
-    glUseProgram(shaderProgram);
-	UpdateColor(lineColor);
-    glBindVertexArray(VAO);
-    glDrawArrays(GL_LINES, 0, 2);
 }
 
 void Line::SetColor(glm::vec4 color)
 {
 	lineColor = color;
+}
+
+glm::vec4 Line::GetColor()
+{
+	return lineColor;
 }
 
 void Line::SetPoints(glm::vec2 start, glm::vec2 end) 
@@ -54,10 +49,8 @@ void Line::SetPoints(glm::vec2 start, glm::vec2 end)
     glBindVertexArray(0);
 
 }
-	
-int Line::UpdateColor(glm::vec4 color)
+
+unsigned int Line::GetVAOID()
 {
-	int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
-	glUniform4f(vertexColorLocation, lineColor.x, lineColor.y, lineColor.z, lineColor.w);
-	return 1;
+	return VBO;
 }
