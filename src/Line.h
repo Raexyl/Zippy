@@ -15,7 +15,6 @@ public:
 
 	void SetColor(glm::vec4 color);
 	glm::vec4 GetColor(void);
-
 	void SetPoints(glm::vec2 start, glm::vec2 end);
 
 	unsigned int GetVAOID(void);

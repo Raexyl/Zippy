@@ -26,6 +26,10 @@ int main(void)
 		//Render here
 		renderer.DrawLine(&myLine);
 
+		float sinval = sin(glfwGetTime()) / 2.0f + 0.5f;
+		float cosval = cos(glfwGetTime()) / 2.0f + 0.5f;
+		myLine.SetPoints(-glm::vec2(sinval, cosval), glm::vec2(sinval, cosval));
+		myLine.SetColor(glm::vec4(sinval, cosval, (sinval + cosval) / 2, 1.0f));
 
 		renderer.SwapBuffers();
     	glfwPollEvents(); 
