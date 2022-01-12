@@ -25,7 +25,8 @@ class Renderer
 	unsigned int width, height;
 
 	public:
-		Renderer(unsigned int width, unsigned int height, const char* windowTitle, void (*RenderFunction)(void));
+		Renderer();
+		Renderer(unsigned int width, unsigned int height, const char* windowTitle);
 		~Renderer();
 
 		//Render Loop methods

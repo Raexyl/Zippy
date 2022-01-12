@@ -1,6 +1,10 @@
 #include "Renderer.h"
 
-Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTitle, void (*RenderFunction)(void))
+Renderer::Renderer()
+{
+}
+
+Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTitle)
 {
 	std::cout << "Initialising GLFW..." << std::endl;
 
@@ -36,8 +40,6 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
 	//Compiling shaders...
 	std::cout << "Compiling Shaders..." << std::endl;
 	lineShader = Shader("../shaders/lineShader.vs", "../shaders/lineShader.fs");
-
-	Render = RenderFunction;
 }
 
 Renderer::~Renderer()
