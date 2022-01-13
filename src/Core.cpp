@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	Logger::SetLogLevel(Logger::logLevel::warning);
+	Logger::SetLogLevel(Logger::logLevel::note);
 
 	//We need an app
     App* a = GetApp();
