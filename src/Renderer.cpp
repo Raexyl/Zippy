@@ -1,12 +1,8 @@
 #include "Renderer.h"
 
-Renderer::Renderer()
-{
-}
-
 Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTitle)
 {
-	std::cout << "Initialising GLFW..." << std::endl;
+	Logger::Log("Initalising GLFW...", Logger::note);
 
     //InitGLFW
     glfwInit();
@@ -18,18 +14,18 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
 	window = glfwCreateWindow(width, height, windowTitle, NULL, NULL);
 	if (window == NULL)
 	{
-    	std::cout << "Failed to create GLFW window" << std::endl;
+    	Logger::Log("Failed to initialise GLFW window.", Logger::error);
     	glfwTerminate();
     	return;
 	}
 	glfwMakeContextCurrent(window);
 
-	std::cout << "Initialising OpenGL..." << std::endl;
+	Logger::Log("Initialising OpenGL...", Logger::note);
 
 	//InitGLAD
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
-    	std::cout << "Failed to initialize GLAD" << std::endl;
+    	Logger::Log("Failed to initalise OpenGL.", Logger::error);
     	return;
 	}
 
@@ -38,7 +34,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback); //Allow re-sizing
 
 	//Compiling shaders...
-	std::cout << "Compiling Shaders..." << std::endl;
+	Logger::Log("Compiling shaders...", Logger::note);
 	lineShader = Shader("../shaders/lineShader.vs", "../shaders/lineShader.fs");
 }
 

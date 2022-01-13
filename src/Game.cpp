@@ -3,15 +3,16 @@
 //In-project files
 #include "Core.h"
 
-Renderer renderer(800, 600, "Zippy");
-glm::vec4 clearColor(0.5f, 0.5f, 0.5f, 1.0f);
-Line myLine(glm::vec2(0.0f, 0.0f), glm::vec2(0.3f, 0.9f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+Renderer renderer(800, 600, "Zippyyyyyyy");
+glm::vec4 clearColor(0.0f, 0.2f, 0.2f, 1.0f);
+Line myLine0(glm::vec2(0.0f, 0.0f), glm::vec2(0.3f, 0.9f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+Line myLine1(glm::vec2(0.0f, 0.0f), glm::vec2(0.3f, 0.9f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 
 class Game : public App
 {
 	void OnStart()
 	{
-		UseRenderer(&renderer); //Must define a renderer
+		UseRenderer(&renderer); //Must define a renderer. Fails otherwise!
 	}
 
 	void OnUpdate()
@@ -26,13 +27,15 @@ class Game : public App
 	void OnRender()
 	{
 		renderer.ClearColor(clearColor);
-
 		
 		float sinval = sin(glfwGetTime()) / 2.0f + 0.5f;
 		float cosval = cos(glfwGetTime()) / 2.0f + 0.5f;
-		myLine.SetPoints(-glm::vec2(sinval, cosval), glm::vec2(sinval, cosval));
-		myLine.SetColor(glm::vec4(sinval, cosval, (sinval + cosval) / 2, 1.0f));
-		renderer.DrawLine(&myLine);
+		myLine0.SetPoints(-glm::vec2(sinval, cosval), glm::vec2(sinval, cosval));
+		myLine0.SetColor(glm::vec4(sinval, cosval, (sinval + cosval) / 2, 1.0f));
+		myLine1.SetPoints(glm::vec2(-cosval, sinval), glm::vec2(cosval, -sinval));
+		myLine1.SetColor(glm::vec4(sinval, cosval, (sinval + cosval) / 2, 1.0f));
+		renderer.DrawLine(&myLine0);
+		renderer.DrawLine(&myLine1);
 
 		renderer.SwapBuffers();
 		glfwPollEvents();

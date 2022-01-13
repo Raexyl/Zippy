@@ -12,6 +12,7 @@
 //Files from this project
 #include "Shader.h"
 #include "Line.h"
+#include "Logger.h"
 
 class Renderer
 {
@@ -27,7 +28,6 @@ class Renderer
 	GLFWwindow* window;
 
 	public:
-		Renderer();
 		Renderer(unsigned int width, unsigned int height, const char* windowTitle);
 		~Renderer();
 
