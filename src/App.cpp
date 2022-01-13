@@ -29,12 +29,23 @@ void App::OnEnd()
 	//Logger::Log("Warning - The App::OnEnd() method has not been overridden by a derivative of this class.");
 }
 
+void App::UseRenderer(Renderer* renderer)
+{
+	m_Renderer = renderer;
+}
+
+bool App::HasRenderer()
+{
+	if(m_Renderer == nullptr) {return false;};
+	return true;
+}
+
 void App::Quit()
 {
-    m_WantToQuit = true;
+    glfwSetWindowShouldClose(m_Renderer->window, true);
 }
 
 bool App::IsQuitting()
 {
-    return m_WantToQuit;
+    return glfwWindowShouldClose(m_Renderer->window);
 }

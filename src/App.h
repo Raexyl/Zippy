@@ -12,11 +12,17 @@ class App
         virtual void     OnUpdate();
 		virtual void 	 OnRender();
         virtual void     OnEnd();
-        void             Quit();
-        bool             IsQuitting();
+
+		//Setup
+		void UseRenderer(Renderer* renderer); //Requires a renderer.
+		bool HasRenderer();
+
+		//Exit
+        void Quit();
+        bool IsQuitting();
 
     private:
-        bool m_WantToQuit = false;
+		Renderer* m_Renderer;
 };
 
 #endif

@@ -3,7 +3,7 @@
 //In-project files
 #include "Core.h"
 
-Renderer renderer(800, 600, "|Zippy|");
+Renderer renderer(800, 600, "Zippy");
 glm::vec4 clearColor(0.5f, 0.5f, 0.5f, 1.0f);
 Line myLine(glm::vec2(0.0f, 0.0f), glm::vec2(0.3f, 0.9f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 
@@ -11,15 +11,20 @@ class Game : public App
 {
 	void OnStart()
 	{
+		UseRenderer(&renderer); //Must define a renderer
 	}
 
 	void OnUpdate()
 	{
+		//Process Inputs
+		if(glfwGetKey(renderer.window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		{
+			Quit();
+		}
 	}
 
 	void OnRender()
 	{
-		renderer.ProcessInput(); // This should be in OnUpdate?! And controllable by user.
 		renderer.ClearColor(clearColor);
 
 		
@@ -42,8 +47,6 @@ App* GetApp()
 {
 	return new Game();
 }
-
-
 
 /*
 int main(void)

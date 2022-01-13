@@ -1,6 +1,5 @@
 #include "Core.h"
 
-
 int main(void)
 {
 	//We need an app
@@ -8,6 +7,8 @@ int main(void)
     if(a == nullptr) {return 1;};
 
 	a->OnStart();
+
+	if(!a->HasRenderer()) {return 1;}; //Must have a renderer by this point
 
     while(!a->IsQuitting())
     {

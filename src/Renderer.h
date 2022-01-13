@@ -21,8 +21,10 @@ class Renderer
 	Shader lineShader;
 
 	//Window details
-	GLFWwindow* window;
 	unsigned int width, height;
+
+	public:
+	GLFWwindow* window;
 
 	public:
 		Renderer();
@@ -30,14 +32,11 @@ class Renderer
 		~Renderer();
 
 		//Render Loop methods
-		void ProcessInput();
 		void SwapBuffers();
 		void ClearColor(glm::vec4 color);
-		int WindowShouldClose();
 
 		//Render things!
 		void DrawLine(Line* line);
-
 };
 
 /* ----- GLFW CALLBACKS! ----- */

@@ -44,18 +44,10 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
 
 Renderer::~Renderer()
 {
+	glfwTerminate();
 }
 
 /* ----- Render Loop Methods ----- */
-
-//Process Inputs
-void Renderer::ProcessInput()
-{
-	if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-	{
-		glfwSetWindowShouldClose(window, true);
-	}
-}
 
 void Renderer::SwapBuffers()
 {
@@ -68,11 +60,6 @@ void Renderer::ClearColor(glm::vec4 color)
 	//Clear colour
 	glClearColor(color.x, color.y, color.z, color.w); //State-setting
 	glClear(GL_COLOR_BUFFER_BIT); //State-using
-}
-
-int Renderer::WindowShouldClose()
-{
-	return glfwWindowShouldClose(window);
 }
 
 /* ----- Draw things! ----- */
