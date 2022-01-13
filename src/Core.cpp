@@ -2,16 +2,18 @@
 
 int main(void)
 {
+	Logger::SetLogLevel(Logger::logLevel::warning);
+
 	//We need an app
     App* a = GetApp();
-    if(a == nullptr) { Logger::Log("No application detected. Please define function \"App* GetApp()\".", Logger::error); return 1; };
+    if(a == nullptr) { Logger::Log("No application detected. Please define function \"App* GetApp()\".", Logger::logLevel::error); return 1; };
 
-	Logger::Log("Starting...", Logger::note);
+	Logger::Log("Starting...", Logger::logLevel::note);
 	a->OnStart();
 
-	if(!a->HasRenderer()) {Logger::Log("No renderer detected. Please tell Zippy to use a renderer via \"UseRenderer(Renderer*)\".", Logger::error); return 1; }; //Must have a renderer by this point
+	if(!a->HasRenderer()) {Logger::Log("No renderer detected. Please tell Zippy to use a renderer via \"UseRenderer(Renderer*)\".", Logger::logLevel::error); return 1; }; //Must have a renderer by this point
 
-	Logger::Log("Beginning main loop...", Logger::note);
+	Logger::Log("Beginning main loop...", Logger::logLevel::note);
     while(!a->IsQuitting())
     {
         a->OnUpdate();

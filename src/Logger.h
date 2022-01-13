@@ -5,12 +5,13 @@
 
 namespace Logger
 {
-	enum level 
+	enum logLevel 
 	{
 		note, warning, error
 	};
 
-	void Log(const char* string, level importance);
+	void Log(const char* string, logLevel importance);
+	void SetLogLevel(logLevel level);
 };
 
 #endif
