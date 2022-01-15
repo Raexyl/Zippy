@@ -2,7 +2,7 @@
 Basic 2D Rendering Engine
 
 Todo: -
- - Why is there a seg fault if the renderer is declared as a field of the game class? --> cos it was private
+ - More seg faults!!! Happens in GetApp()?
 
 Project Aims: -
  - Draw hollow polygons.

@@ -13,13 +13,25 @@ class App
 		virtual void 	 OnRender();
         virtual void     OnEnd();
 
-		//Setup
-		void UseRenderer(Renderer* renderer); //Requires a renderer.
 		bool HasRenderer();
+		bool IsQuitting();
+
+	protected: //i.e. can be used by derivatives
+		//Setup
+		void InitialiseWindow(unsigned int width, unsigned int height, const char* windowTitle);
+
+		//Rendering
+		void ClearColor(glm::vec4 color);
+		void DrawLine(Line* line);
+		void SwapBuffers();
+
+		//Input management
+		bool GetKeyPress(unsigned int key);
 
 		//Exit
         void Quit();
-        bool IsQuitting();
+		void CleanUp();
+
 
     private:
 		Renderer* m_Renderer;

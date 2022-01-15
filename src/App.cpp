@@ -1,6 +1,6 @@
 #include "App.h"
 
-
+ 
 App::App()
 {
 }
@@ -11,27 +11,22 @@ App::~App()
 
 void App::OnStart()
 {
-    //Logger::Log("Warning - The App::OnStart() method has not been overridden by a derivative of this class.");
+    Logger::Log("App::OnStart() has not been overridden by a derivative of this class.", Logger::logLevel::warning);
 }
 
 void App::OnUpdate()
 {
-	//Logger::Log("Warning - The App::OnUpdate() method has not been overridden by a derivative of this class.");
+	Logger::Log("App::OnUpdate() has not been overridden by a derivative of this class.", Logger::logLevel::warning);
 }
 
 void App::OnRender()
 {
-	//Logger::Log("Warning - The App::OnRender() method has not been overridden by a derivative of this class.");
+	Logger::Log("App::OnRender() has not been overridden by a derivative of this class.", Logger::logLevel::warning);
 }
 
 void App::OnEnd()
 {
-	//Logger::Log("Warning - The App::OnEnd() method has not been overridden by a derivative of this class.");
-}
-
-void App::UseRenderer(Renderer* renderer)
-{
-	m_Renderer = renderer;
+	Logger::Log("App::OnEnd() has not been overridden by a derivative of this class.", Logger::logLevel::warning);
 }
 
 bool App::HasRenderer()
@@ -40,9 +35,54 @@ bool App::HasRenderer()
 	return true;
 }
 
+/* ----- Setup ----- */
+void App::InitialiseWindow(unsigned int width, unsigned int height, const char* windowTitle)
+{
+	m_Renderer = new Renderer(width, height, windowTitle);
+}
+
+
+/* ----- Rendering ----- */
+//Clear buffer with a solid color.
+void App::ClearColor(glm::vec4 color)
+{
+	m_Renderer->ClearColor(color);
+}
+
+//Draw the input line in the window.
+void App::DrawLine(Line* line)
+{
+	m_Renderer->DrawLine(line);
+}
+
+//Swap the presented buffer with the hidden buffer. Updates the frame.
+void App::SwapBuffers()
+{
+	m_Renderer->SwapBuffers();
+}
+
+
+/* ----- Input ----- */
+//Returns true if the specified button is pressed.
+bool App::GetKeyPress(unsigned int key)
+{
+	if( glfwGetKey(m_Renderer->window, key) == GLFW_PRESS)
+	{
+		return true;
+	}
+	return false;
+}
+
+
+/* ----- Exit ----- */
 void App::Quit()
 {
     glfwSetWindowShouldClose(m_Renderer->window, true);
+}
+
+void App::CleanUp()
+{
+	delete m_Renderer;
 }
 
 bool App::IsQuitting()
