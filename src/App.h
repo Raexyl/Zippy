@@ -13,12 +13,16 @@ class App
 		virtual void 	 OnRender();
         virtual void     OnEnd();
 
+		//Setup
 		bool HasRenderer();
+		void InitialiseWindow(unsigned int width, unsigned int height, const char* windowTitle);
+		
+		//Exit
 		bool IsQuitting();
 
+
+
 	protected: //i.e. can be used by derivatives
-		//Setup
-		void InitialiseWindow(unsigned int width, unsigned int height, const char* windowTitle);
 
 		//Rendering
 		void ClearColor(glm::vec4 color);

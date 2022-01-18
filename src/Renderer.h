@@ -16,8 +16,6 @@
 
 class Renderer
 {
-	void (*Render)(void);
-
 	//Default shaders
 	Shader lineShader;
 

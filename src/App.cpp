@@ -38,6 +38,9 @@ bool App::HasRenderer()
 /* ----- Setup ----- */
 void App::InitialiseWindow(unsigned int width, unsigned int height, const char* windowTitle)
 {
+	if(m_Renderer != nullptr) {
+		delete m_Renderer;
+	}
 	m_Renderer = new Renderer(width, height, windowTitle);
 }
 
@@ -66,7 +69,7 @@ void App::SwapBuffers()
 //Returns true if the specified button is pressed.
 bool App::GetKeyPress(unsigned int key)
 {
-	if( glfwGetKey(m_Renderer->window, key) == GLFW_PRESS)
+	if(glfwGetKey(m_Renderer->window, key) == GLFW_PRESS)
 	{
 		return true;
 	}
