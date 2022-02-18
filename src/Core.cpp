@@ -1,14 +1,9 @@
 #include "Core.h"
-#include "Inits.h"
 
 int main(void)
 {
 	Logger::SetLogLevel(Logger::logLevel::note);
-	Logger::Log("Core Starting.", Logger::logLevel::note);
-
-	//Init GLFW, GLAD
-	InitGLFW();
-	if(!InitGLAD()) { return 1; };
+	Logger::Log("Core Starting...", Logger::logLevel::note);
 
 	//We need an app
     App* a = GetApp(); 

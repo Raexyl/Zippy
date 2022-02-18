@@ -2,13 +2,13 @@
 
 Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTitle)
 {
-//	Logger::Log("Initalising GLFW...", Logger::logLevel::note);
-//
-//    //InitGLFW
-//    glfwInit();
-//    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-//    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-//    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	Logger::Log("Initalising GLFW...", Logger::logLevel::note);
+
+    //InitGLFW
+    glfwInit();
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	//Create window
 	window = glfwCreateWindow(width, height, windowTitle, NULL, NULL);
@@ -20,14 +20,14 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
 	}
 	glfwMakeContextCurrent(window);
 
-//	Logger::Log("Initialising OpenGL...",Logger::logLevel::note);
-//
-//	//InitGLAD
-//	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-//	{
-//    	Logger::Log("Failed to initalise OpenGL.", Logger::logLevel::error);
-//    	return;
-//	}
+	Logger::Log("Initialising OpenGL...",Logger::logLevel::note);
+
+	//InitGLAD
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
+    	Logger::Log("Failed to initalise OpenGL.", Logger::logLevel::error);
+    	return;
+	}
 
 	//Window Configs
 	glViewport(0, 0, width, height);	//Establish co-ordinate system of window

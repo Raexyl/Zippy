@@ -7,7 +7,7 @@
 class Game : public App
 {
 	glm::vec4 clearColor = glm::vec4(0.0f, 0.2f, 0.2f, 1.0f);
-	//Line myLine0;// = Line(glm::vec2(0.0f, 0.0f), glm::vec2(0.3f, 0.9f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)); //Removing this will remove the segfault.
+	//Line myLine0 = Line(glm::vec2(0.0f, 0.0f), glm::vec2(0.3f, 0.9f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)); //Removing this will remove the segfault.
 	//Line myLine1 = Line(glm::vec2(0.0f, 0.0f), glm::vec2(0.3f, 0.9f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 
 	void OnStart()
