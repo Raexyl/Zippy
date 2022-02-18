@@ -1,11 +1,15 @@
 #include "Line.h"
 
+Line::Line()
+{
+}
+
 Line::Line(glm::vec2 start, glm::vec2 end, glm::vec4 color)
 {
 	vertices[0] = start;
 	vertices[1] = end;
 	lineColor = color;
-       
+
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glBindVertexArray(VAO);
@@ -47,7 +51,6 @@ void Line::SetPoints(glm::vec2 start, glm::vec2 end)
 	//unbind?
 	glBindBuffer(GL_ARRAY_BUFFER, 0); 
     glBindVertexArray(0);
-
 }
 
 unsigned int Line::GetVAOID()

@@ -44,7 +44,6 @@ void App::InitialiseWindow(unsigned int width, unsigned int height, const char* 
 	m_Renderer = new Renderer(width, height, windowTitle);
 }
 
-
 /* ----- Rendering ----- */
 //Clear buffer with a solid color.
 void App::ClearColor(glm::vec4 color)

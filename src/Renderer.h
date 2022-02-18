@@ -14,8 +14,13 @@
 #include "Line.h"
 #include "Logger.h"
 
+//Singleton!
 class Renderer
 {
+	//Enforce singleton status
+	static Renderer* instance;
+	private: Renderer(unsigned int width, unsigned int height, const char* windowTitle);
+
 	//Default shaders
 	Shader lineShader;
 
@@ -26,7 +31,8 @@ class Renderer
 	GLFWwindow* window;
 
 	public:
-		Renderer(unsigned int width, unsigned int height, const char* windowTitle);
+
+		static Renderer *GetInstance();
 		~Renderer();
 
 		//Render Loop methods

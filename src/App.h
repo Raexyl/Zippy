@@ -20,8 +20,6 @@ class App
 		//Exit
 		bool IsQuitting();
 
-
-
 	protected: //i.e. can be used by derivatives
 
 		//Rendering

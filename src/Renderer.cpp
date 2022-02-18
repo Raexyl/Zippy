@@ -38,6 +38,15 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
 	lineShader = Shader("../shaders/lineShader.vs", "../shaders/lineShader.fs");
 }
 
+public static Renderer* Renderer::GetInstance()
+{
+	if(instance == nullptr)
+	{
+		instance = new Renderer(800, 600, "Zippy");
+	}
+	return instance;
+}
+
 Renderer::~Renderer()
 {
 	glfwTerminate();

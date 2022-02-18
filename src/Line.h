@@ -10,6 +10,7 @@ class Line {
 	glm::vec2 vertices[2]; 	//Goes into VBO
 
 public:
+	Line();
     Line(glm::vec2 start, glm::vec2 end, glm::vec4 color);
 	~Line();
 

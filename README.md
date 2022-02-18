@@ -4,6 +4,8 @@ Basic 2D Rendering Engine
 Todo: -
  - More seg faults!!! Happens in GetApp()? <-- Cause of Line Constructor being called before GLFW and GLAD are initialised.
 
+  - Maybe app shouldn't contain a renderer pointer? Have a Renderer singleton?
+
 Project Aims: -
  - Draw hollow polygons.
  - Draw filled polygons.
