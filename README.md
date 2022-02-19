@@ -2,8 +2,9 @@
 Basic 2D Rendering Engine
 
 Todo: -
- - Renderer singleton!
- - Input singleton!
+ - Make sure includes are sensible?
+ - Add more Renderer methods
+ - Add more Input methods
 
 Project Aims: -
  - Draw hollow polygons.
