@@ -15,6 +15,7 @@ class Game : public App
 
 	void OnUpdate()
 	{
+		if(Input::GetKeyPress(GLFW_KEY_Q)) { Quit(); };
 	}
 
 	void OnRender()

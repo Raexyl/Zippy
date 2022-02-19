@@ -1,7 +1,10 @@
 #include "Input.h"
 
-Input::Input()
+#include "Renderer.h"
+
+Input::Input(int x)
 {
+
 }
 
 Input::~Input()

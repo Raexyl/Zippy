@@ -14,7 +14,7 @@ public:
 	}
 
 private:
-	Input();
+	Input(int x); //For some reason the constructor needs an argument!? Even if the argument does nothing!?
 	static Input instance;
 
 	/* ----- Regular class stuff ----- */
