@@ -12,8 +12,6 @@ int main(void)
 	Logger::Log("Starting App...", Logger::logLevel::note);
 	a->OnStart();
 
-	if(!a->HasRenderer()) {Logger::Log("No renderer detected. Please use \"InitWindow()\" in OnStart().", Logger::logLevel::error); return 1; }; //Must have a renderer by this point
-
 	Logger::Log("Beginning main loop...", Logger::logLevel::note);
     while(!a->IsQuitting())
     {

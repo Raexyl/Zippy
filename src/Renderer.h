@@ -17,30 +17,49 @@
 //Singleton!
 class Renderer
 {
-	//Enforce singleton status
-	static Renderer* instance;
-	private: Renderer(unsigned int width, unsigned int height, const char* windowTitle);
+	/* ----- Enforce singleton status ----- */
+public:
+	Renderer(const Renderer&) = delete; //Delete copy constructor
+	Renderer& operator=(const Renderer&) = delete;	//Delete assignment operator
 
-	//Default shaders
-	Shader lineShader;
+	static Renderer& Get()
+	{
+		return instance;
+	}
 
-	//Window details
+private:
+	Renderer(unsigned int width, unsigned int height, const char* windowTitle);
+	static Renderer instance;
+
+	/* ----- Regular class stuff ----- */
+private:
+	Shader lineShader; //Default shaders
 	unsigned int width, height;
-
-	public:
 	GLFWwindow* window;
 
-	public:
+public:
+	~Renderer();
 
-		static Renderer *GetInstance();
-		~Renderer();
+	//Get methods
+	static GLFWwindow* GetWindow();
 
-		//Render Loop methods
-		void SwapBuffers();
-		void ClearColor(glm::vec4 color);
+	//Render Loop methods
+	static void SwapBuffers();
+	static void ClearColor(glm::vec4 color);
 
-		//Render things!
-		void DrawLine(Line* line);
+	//Render things!
+	static void DrawLine(Line* line);
+
+private:
+	//Get methods
+	GLFWwindow* HiddenGetWindow();
+
+	//Render Loop methods
+	void HiddenSwapBuffers();
+	void HiddenClearColor(glm::vec4 color);
+
+	//Render things!
+	void HiddenDrawLine(Line* line);
 };
 
 /* ----- GLFW CALLBACKS! ----- */

@@ -1,5 +1,8 @@
 #include "Renderer.h"
 
+//Declare singleton instance!
+Renderer Renderer::instance(800, 600, "Loading Zippy...");
+
 Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTitle)
 {
 	Logger::Log("Initalising GLFW...", Logger::logLevel::note);
@@ -38,38 +41,42 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
 	lineShader = Shader("../shaders/lineShader.vs", "../shaders/lineShader.fs");
 }
 
-public static Renderer* Renderer::GetInstance()
-{
-	if(instance == nullptr)
-	{
-		instance = new Renderer(800, 600, "Zippy");
-	}
-	return instance;
-}
-
 Renderer::~Renderer()
 {
 	glfwTerminate();
 }
 
-/* ----- Render Loop Methods ----- */
+/* ----- Public *unhidden* method wrappers! ----- */
 
-void Renderer::SwapBuffers()
+GLFWwindow* Renderer::GetWindow() { return Get().HiddenGetWindow(); };
+
+void Renderer::SwapBuffers() { Get().HiddenSwapBuffers(); };
+
+void Renderer::ClearColor(glm::vec4 color) { Get().HiddenClearColor(color); };
+
+void Renderer::DrawLine(Line* line) { Get().HiddenDrawLine(line); };
+
+/* ----- Private *hidden* methods ----- */
+
+GLFWwindow* Renderer::HiddenGetWindow()
+{
+	return window;
+}
+
+void Renderer::HiddenSwapBuffers()
 {
 	//Swap Buffers
     glfwSwapBuffers(window);
 }
 
-void Renderer::ClearColor(glm::vec4 color)
+void Renderer::HiddenClearColor(glm::vec4 color)
 {
 	//Clear colour
 	glClearColor(color.x, color.y, color.z, color.w); //State-setting
 	glClear(GL_COLOR_BUFFER_BIT); //State-using
 }
 
-/* ----- Draw things! ----- */
-
-void Renderer::DrawLine(Line* line)
+void Renderer::HiddenDrawLine(Line* line)
 {
 	//Load shader
 	glUseProgram(lineShader.ID);
@@ -82,6 +89,7 @@ void Renderer::DrawLine(Line* line)
     glBindVertexArray(line->GetVAOID());
     glDrawArrays(GL_LINES, 0, 2);
 }
+
 
 /* ----- GLFW CALLBACKS! ----- */
 

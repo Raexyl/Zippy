@@ -14,7 +14,6 @@ class App
         virtual void     OnEnd();
 
 		//Setup
-		bool HasRenderer();
 		void InitialiseWindow(unsigned int width, unsigned int height, const char* windowTitle);
 		
 		//Exit
@@ -22,21 +21,8 @@ class App
 
 	protected: //i.e. can be used by derivatives
 
-		//Rendering
-		void ClearColor(glm::vec4 color);
-		void DrawLine(Line* line);
-		void SwapBuffers();
-
-		//Input management
-		bool GetKeyPress(unsigned int key);
-
 		//Exit
         void Quit();
-		void CleanUp();
-
-
-    private:
-		Renderer* m_Renderer;
 };
 
 #endif
