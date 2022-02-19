@@ -1,8 +1,9 @@
 #include "Core.h"
 
-//Declare singleton instances!
+//Declare singleton instances! (in this order)
 Renderer Renderer::instance(800, 600, "Loading Zippy..."); //Renderer
-															//Input singleton here
+Input Input::instance(); //Input 
+
 
 int main(void)
 {

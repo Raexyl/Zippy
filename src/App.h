@@ -2,6 +2,7 @@
 #define APP_H
 
 #include "Renderer.h"
+#include "Input.h"
 
 class App
 {
