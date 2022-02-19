@@ -1,8 +1,5 @@
 #include "Renderer.h"
 
-//Declare singleton instance!
-Renderer Renderer::instance(800, 600, "Loading Zippy...");
-
 Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTitle)
 {
 	Logger::Log("Initalising GLFW...", Logger::logLevel::note);

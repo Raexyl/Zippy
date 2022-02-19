@@ -1,5 +1,9 @@
 #include "Core.h"
 
+//Declare singleton instances!
+Renderer Renderer::instance(800, 600, "Loading Zippy..."); //Renderer
+															//Input singleton here
+
 int main(void)
 {
 	Logger::SetLogLevel(Logger::logLevel::note);
