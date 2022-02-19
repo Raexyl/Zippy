@@ -4,6 +4,9 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
 {
 	Logger::Log("Initalising GLFW...", Logger::logLevel::note);
 
+	//Assign GLFW error callback
+	glfwSetErrorCallback(error_callback);
+
     //InitGLFW
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -94,4 +97,10 @@ void Renderer::HiddenDrawLine(Line* line)
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
+}
+
+//Report errors
+void error_callback(int error, const char* description)
+{
+    Logger::Log(description, Logger::logLevel::error);
 }
