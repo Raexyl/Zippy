@@ -4,7 +4,7 @@
 //Logging (& debugging)
 #include <iostream>
 
-//Graphics
+//External includes
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>

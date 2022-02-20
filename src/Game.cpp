@@ -1,6 +1,5 @@
-//LearnOpenGL Tutorial follow-along (see readme)
 
-//In-project files
+//Include Zippy
 #include "Core.h"
 
 class Game : public App
