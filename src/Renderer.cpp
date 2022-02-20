@@ -98,12 +98,8 @@ void Renderer::HiddenDrawLine(Line* line)
 	glUniform4f(vertexColorLocation, ourLineColor.x, ourLineColor.y, ourLineColor.z, ourLineColor.w);
 
 	//Update screenSize
-	//int vertexScreenSizeLocation = glGetUniformLocation(m_LineShader.ID, "screenSize");
-	//glUniform2f(vertexScreenSizeLocation, (float)m_Width, (float)m_Height);
-
-	//float tempfloat[2];
-	//glGetUniformfv(m_LineShader.ID, vertexScreenSizeLocation, &tempfloat);
-	//std::cout << tempfloat << std::endl;
+	int vertexScreenSizeLocation = glGetUniformLocation(m_LineShader.ID, "screenSize");
+	glUniform2f(vertexScreenSizeLocation, (float)m_Width, (float)m_Height);
 	
 	//Bind and draw
     glBindVertexArray(line->GetVAOID());

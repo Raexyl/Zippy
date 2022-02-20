@@ -2,8 +2,8 @@
 Basic 2D Rendering Engine (Linux Only)
 
 Todo: -
- - Alter shaders to work on pixel co-ordinates
  - How to cancel main() when GLFW fails to init?
+ - How to cancel when shader compilation fails?
  - Make sure includes are sensible? - Which ones should be hidden?
  - Add more Renderer methods
  - Add more Input methods
