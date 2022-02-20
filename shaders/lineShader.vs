@@ -2,14 +2,14 @@
 
 layout (location = 0) in vec2 aPos;
 
-in vec2 vs_ScreenSize;
+uniform vec2 screenSize = vec2(800.0f, 600.0f);
 
 //Translate from window pixel co-ordinates to GL co-ordinates (+ or - 1.0f in x and y axes)
 vec2 ToGLSpace(in vec2 point)
 {
 	vec2 temp;
-	temp.x = (point.x / (vs_ScreenSize.x/2)) - 1.0f;
-	temp.y = (point.y / (vs_ScreenSize.y/2)) - 1.0f;
+	temp.x = (point.x / (screenSize.x/2)) - 1.0f;
+	temp.y = (point.y / (screenSize.y/2)) - 1.0f;
 	return temp;
 }
 
