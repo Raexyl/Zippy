@@ -3,8 +3,7 @@ Basic 2D Rendering Engine (Linux Only)
 
 Todo: -
  - How to cancel main() when GLFW fails to init?
- - Doesn't work on desktop? (Could be Manjaro problem...?)
- - Make sure includes are sensible?
+ - Make sure includes are sensible? - Which ones should be hidden?
  - Add more Renderer methods
  - Add more Input methods
 
