@@ -15,9 +15,9 @@ Project Aims: -
 
 Build instructions for Linux only: - 
  - Clone git repository.
- - cd into it
- - run "make" in the terminal
- - cd into build
+ - cd into it (or open the repository in the terminal)
+ - run "make clean" in the terminal
+ - cd into the build directory
  - call "./Zippy" in the terminal
 
- - If you wish to change the application, edit Game.cpp as you wish, then rebuild.
+ - If you wish to change the application, edit Game.cpp as you wish, then rebuild as above.

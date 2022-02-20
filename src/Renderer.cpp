@@ -14,14 +14,14 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	//Create window
-	window = glfwCreateWindow(width, height, windowTitle, NULL, NULL);
-	if (window == NULL)
+	m_Window = glfwCreateWindow(width, height, windowTitle, NULL, NULL);
+	if (m_Window == NULL)
 	{
     	Logger::Log("Failed to initialise GLFW window.", Logger::logLevel::error);
     	glfwTerminate();
     	return;
 	}
-	glfwMakeContextCurrent(window);
+	glfwMakeContextCurrent(m_Window);
 
 	Logger::Log("Initialising OpenGL...",Logger::logLevel::note);
 
@@ -34,11 +34,11 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
 
 	//Window Configs
 	glViewport(0, 0, width, height);	//Establish co-ordinate system of window
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback); //Allow re-sizing
+	glfwSetFramebufferSizeCallback(m_Window, Renderer::framebuffer_size_callback); //Allow re-sizing
 
 	//Compiling shaders...
 	Logger::Log("Compiling shaders...", Logger::logLevel::note);
-	lineShader = Shader("../shaders/lineShader.vs", "../shaders/lineShader.fs");
+	m_LineShader = Shader("../shaders/lineShader.vs", "../shaders/lineShader.fs");
 }
 
 Renderer::~Renderer()
@@ -50,23 +50,32 @@ Renderer::~Renderer()
 
 GLFWwindow* Renderer::GetWindow() { return Get().HiddenGetWindow(); };
 
+glm::vec2 Renderer::GetScreenDimensions() { return Get().HiddenGetScreenDimensions(); };
+
 void Renderer::SwapBuffers() { Get().HiddenSwapBuffers(); };
 
 void Renderer::ClearColor(glm::vec4 color) { Get().HiddenClearColor(color); };
 
 void Renderer::DrawLine(Line* line) { Get().HiddenDrawLine(line); };
 
+void Renderer::framebuffer_size_callback(GLFWwindow* window, int width, int height) { Get().hidden_framebuffer_size_callback(window, width, height); };
+
 /* ----- Private *hidden* methods ----- */
 
 GLFWwindow* Renderer::HiddenGetWindow()
 {
-	return window;
+	return m_Window;
+}
+
+glm::vec2 Renderer::HiddenGetScreenDimensions()
+{
+	return glm::vec2(m_Width, m_Height);
 }
 
 void Renderer::HiddenSwapBuffers()
 {
 	//Swap Buffers
-    glfwSwapBuffers(window);
+    glfwSwapBuffers(m_Window);
 }
 
 void Renderer::HiddenClearColor(glm::vec4 color)
@@ -79,13 +88,23 @@ void Renderer::HiddenClearColor(glm::vec4 color)
 void Renderer::HiddenDrawLine(Line* line)
 {
 	//Load shader
-	glUseProgram(lineShader.ID);
+	glUseProgram(m_LineShader.ID);
 
+	//Uniforms
 	//Update color
-	int vertexColorLocation = glGetUniformLocation(lineShader.ID, "ourColor");
+	int vertexColorLocation = glGetUniformLocation(m_LineShader.ID, "ourColor");
 	glm::vec4 ourLineColor = line->GetColor();
 	glUniform4f(vertexColorLocation, ourLineColor.x, ourLineColor.y, ourLineColor.z, ourLineColor.w);
+
+	//Update screenSize
+	int vertexScreenSizeLocation = glGetUniformLocation(m_LineShader.ID, "screenSize");
+	glUniform2f(vertexScreenSizeLocation, (float)m_Width, (float)m_Height);
+
+	//float tempfloat[2];
+	//glGetUniformfv(m_LineShader.ID, vertexScreenSizeLocation, &tempfloat);
+	//std::cout << tempfloat << std::endl;
 	
+	//Bind and draw
     glBindVertexArray(line->GetVAOID());
     glDrawArrays(GL_LINES, 0, 2);
 }
@@ -93,10 +112,12 @@ void Renderer::HiddenDrawLine(Line* line)
 
 /* ----- GLFW CALLBACKS! ----- */
 
-//Callback to allow re-sizing
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+//Callback to allow re-sizing (currently disabled)
+void Renderer::hidden_framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
+	m_Width = width;
+	m_Height = height;
 }
 
 //Report errors

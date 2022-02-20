@@ -22,9 +22,11 @@ public:
 	~Input();
 
 	static bool GetKeyPress(unsigned int keyCode);
+	static void PollEvents(void);
 
 private:
 	bool HiddenGetKeyPress(unsigned int keyCode);
+	void HiddenPollEvents(void);
 };
 
 #endif

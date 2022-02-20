@@ -33,15 +33,16 @@ private:
 
 	/* ----- Regular class stuff ----- */
 private:
-	Shader lineShader; //Default shaders
-	unsigned int width, height;
-	GLFWwindow* window;
+	Shader m_LineShader; //Default shaders
+	unsigned int m_Width, m_Height;
+	GLFWwindow* m_Window;
 
 public:
 	~Renderer();
 
 	//Get methods
 	static GLFWwindow* GetWindow();
+	static glm::vec2 GetScreenDimensions();
 
 	//Render Loop methods
 	static void SwapBuffers();
@@ -50,9 +51,13 @@ public:
 	//Render things!
 	static void DrawLine(Line* line);
 
+	//Callbacks
+	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+
 private:
 	//Get methods
 	GLFWwindow* HiddenGetWindow();
+	glm::vec2 HiddenGetScreenDimensions();
 
 	//Render Loop methods
 	void HiddenSwapBuffers();
@@ -60,6 +65,9 @@ private:
 
 	//Render things!
 	void HiddenDrawLine(Line* line);
+
+	//Callbacks
+	void hidden_framebuffer_size_callback(GLFWwindow* window, int width, int height);
 };
 
 /* ----- GLFW CALLBACKS! ----- */

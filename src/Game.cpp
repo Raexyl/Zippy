@@ -14,6 +14,7 @@ class Game : public App
 
 	void OnUpdate()
 	{
+		Input::PollEvents();
 		if(Input::GetKeyPress(GLFW_KEY_Q)) { Quit(); };
 	}
 
@@ -23,7 +24,7 @@ class Game : public App
 		
 		float sinval = sin(glfwGetTime()) / 2.0f + 0.5f;
 		float cosval = cos(glfwGetTime()) / 2.0f + 0.5f;
-		myLine0.SetPoints(-glm::vec2(sinval, cosval), glm::vec2(sinval, cosval));
+		myLine0.SetPoints(-glm::vec2(sinval, cosval)*100.0f, glm::vec2(sinval, cosval)*100.0f);
 		myLine0.SetColor(glm::vec4(sinval, cosval, (sinval + cosval) / 2, 1.0f));
 		myLine1.SetPoints(glm::vec2(-cosval, sinval), glm::vec2(cosval, -sinval));
 		myLine1.SetColor(glm::vec4(sinval, cosval, (sinval + cosval) / 2, 1.0f));
@@ -31,7 +32,6 @@ class Game : public App
 		Renderer::DrawLine(&myLine1);
 //
 		Renderer::SwapBuffers();
-		glfwPollEvents();
 	}
 
 	void OnEnd()
