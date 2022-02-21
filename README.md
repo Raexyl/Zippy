@@ -2,11 +2,18 @@
 Basic 2D Rendering Engine (Linux Only)
 
 Todo: -
- - How to cancel main() when GLFW fails to init?
- - How to cancel when shader compilation fails?
  - Make sure includes are sensible? - Which ones should be hidden?
  - Add more Renderer methods
- - Add more Input methods
+	 = Set screen size and title
+ - Add .o files and executables to a .gitignore
+ - Add more Input methods?
+ - Shaders
+	 = Write Hollow Polygon shader? Or something? idk how to deal with unknown no. of vertices
+ 	 = Write filled polygon shader? ^^^^^^^^^^^^^
+   	 = Write texture shader.
+ - Windows compatibility?
+ - Convert to dynamic library? (.dll and .so)
+ - Time singleton?
 
 Project Aims: -
  - Draw hollow polygons.

@@ -7,6 +7,9 @@ Input Input::instance(0); //Input
 
 int main(void)
 {
+	//Check singletons initialised correctly.
+	if(!Renderer::InitialisedSuccessfully()) { Logger::Log("Renderer failed to initalise.", Logger::logLevel::error); return 1; };
+
 	Logger::SetLogLevel(Logger::logLevel::note);
 	Logger::Log("Starting Core...", Logger::logLevel::note);
 

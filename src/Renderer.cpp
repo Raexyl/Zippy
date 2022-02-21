@@ -39,7 +39,11 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
 
 	//Compiling shaders...
 	Logger::Log("Compiling shaders...", Logger::logLevel::note);
-	m_LineShader = Shader("../shaders/lineShader.vs", "../shaders/lineShader.fs");
+	int shaderCompilationSuccess = false;
+	m_LineShader = Shader("../shaders/lineShader.vs", "../shaders/lineShader.fs", &shaderCompilationSuccess);
+	if(!shaderCompilationSuccess) { return; };
+
+	successfulInitialisation = true;
 }
 
 Renderer::~Renderer()
@@ -52,6 +56,8 @@ Renderer::~Renderer()
 GLFWwindow* Renderer::GetWindow() { return Get().HiddenGetWindow(); };
 
 glm::vec2 Renderer::GetScreenDimensions() { return Get().HiddenGetScreenDimensions(); };
+
+bool Renderer::InitialisedSuccessfully() { return Get().HiddenInitialisedSuccessfully(); };
 
 void Renderer::SwapBuffers() { Get().HiddenSwapBuffers(); };
 
@@ -71,6 +77,11 @@ GLFWwindow* Renderer::HiddenGetWindow()
 glm::vec2 Renderer::HiddenGetScreenDimensions()
 {
 	return glm::vec2(m_Width, m_Height);
+}
+
+bool Renderer::HiddenInitialisedSuccessfully()
+{
+	return successfulInitialisation;
 }
 
 void Renderer::HiddenSwapBuffers()

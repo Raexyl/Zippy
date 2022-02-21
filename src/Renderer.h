@@ -36,6 +36,7 @@ private:
 	Shader m_LineShader; //Default shaders
 	unsigned int m_Width, m_Height;
 	GLFWwindow* m_Window;
+	bool successfulInitialisation = false;
 
 public:
 	~Renderer();
@@ -43,6 +44,7 @@ public:
 	//Get methods
 	static GLFWwindow* GetWindow();
 	static glm::vec2 GetScreenDimensions();
+	static bool InitialisedSuccessfully();
 
 	//Render Loop methods
 	static void SwapBuffers();
@@ -58,6 +60,7 @@ private:
 	//Get methods
 	GLFWwindow* HiddenGetWindow();
 	glm::vec2 HiddenGetScreenDimensions();
+	bool HiddenInitialisedSuccessfully();
 
 	//Render Loop methods
 	void HiddenSwapBuffers();

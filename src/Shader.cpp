@@ -1,12 +1,16 @@
 #include "Shader.h"
 
+#include "Logger.h"
+
 Shader::Shader()
 {
 }
 
 //Read, Compile and Link shaders from files.
-Shader::Shader(const char* vertexPath, const char* fragmentPath)
+Shader::Shader(const char* vertexPath, const char* fragmentPath, int* successState)
 {
+	*successState = false;
+
     // 1. retrieve the vertex/fragment source code from filePath
     std::string vertexCode;
     std::string fragmentCode;
@@ -33,7 +37,8 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     }
     catch(std::ifstream::failure& e)
     {
-        std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
+        Logger::Log("Shader file not successfully read.", Logger::logLevel::error);
+		return;
     }
     const char* vShaderCode = vertexCode.c_str();
     const char* fShaderCode = fragmentCode.c_str();
@@ -52,7 +57,9 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
 	if(!success)
 	{
 	    glGetShaderInfoLog(vertex, 512, NULL, infoLog);
-	    std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+	    Logger::Log("Vertex shader compilation failed.", Logger::logLevel::error);
+		Logger::Log(infoLog, Logger::logLevel::error);
+		return;
 	};
 	
 	// fragment Shader
@@ -64,7 +71,9 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
 	if(!success)
 	{
 	    glGetShaderInfoLog(fragment, 512, NULL, infoLog);
-	    std::cout << "ERROR::SHADER::FRAGMENT:COMPILATION_FAILED\n" << infoLog << std::endl;
+	    Logger::Log("Fragment shader compilation failed.", Logger::logLevel::error);
+		Logger::Log(infoLog, Logger::logLevel::error);
+		return;
 	};
 
 	// shader Program
@@ -77,12 +86,16 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
 	if(!success)
 	{
 	    glGetProgramInfoLog(ID, 512, NULL, infoLog);
-	    std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+	    Logger::Log("Shader linking failed.", Logger::logLevel::error);
+		Logger::Log(infoLog, Logger::logLevel::error);
+		return;
 	}
 	
 	// delete the shaders as they're linked into our program now and no longer necessary
 	glDeleteShader(vertex);
 	glDeleteShader(fragment);
+
+	*successState = true;
 }
 
 //Activate shader program
