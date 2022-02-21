@@ -46,6 +46,10 @@ public:
 	static glm::vec2 GetScreenDimensions();
 	static bool InitialisedSuccessfully();
 
+	//Setup stuff
+	static void SetWindowTitle(const char* string);
+	static void SetWindowSize(unsigned int width, unsigned int height);
+
 	//Render Loop methods
 	static void SwapBuffers();
 	static void ClearColor(glm::vec4 color);
@@ -61,6 +65,10 @@ private:
 	GLFWwindow* HiddenGetWindow();
 	glm::vec2 HiddenGetScreenDimensions();
 	bool HiddenInitialisedSuccessfully();
+
+	//Setup
+	void HiddenSetWindowTitle(const char* string);
+	void HiddenSetWindowSize(unsigned int width, unsigned int height);
 
 	//Render Loop methods
 	void HiddenSwapBuffers();

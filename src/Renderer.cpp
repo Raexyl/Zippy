@@ -59,6 +59,10 @@ glm::vec2 Renderer::GetScreenDimensions() { return Get().HiddenGetScreenDimensio
 
 bool Renderer::InitialisedSuccessfully() { return Get().HiddenInitialisedSuccessfully(); };
 
+void Renderer::SetWindowTitle(const char* string) { Get().HiddenSetWindowTitle(string); };
+
+void Renderer::SetWindowSize(unsigned int width, unsigned int height) { Get().HiddenSetWindowSize(width, height); };
+
 void Renderer::SwapBuffers() { Get().HiddenSwapBuffers(); };
 
 void Renderer::ClearColor(glm::vec4 color) { Get().HiddenClearColor(color); };
@@ -82,6 +86,16 @@ glm::vec2 Renderer::HiddenGetScreenDimensions()
 bool Renderer::HiddenInitialisedSuccessfully()
 {
 	return successfulInitialisation;
+}
+
+void Renderer::HiddenSetWindowTitle(const char* string)
+{
+	glfwSetWindowTitle(m_Window, string);
+}
+
+void Renderer::HiddenSetWindowSize(unsigned int width, unsigned int height)
+{
+	glfwSetWindowSize(m_Window, width, height);
 }
 
 void Renderer::HiddenSwapBuffers()

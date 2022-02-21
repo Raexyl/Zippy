@@ -2,11 +2,9 @@
 Basic 2D Rendering Engine (Linux Only)
 
 Todo: -
- - Make sure includes are sensible? - Which ones should be hidden?
- - Add more Renderer methods
-	 = Set screen size and title
+ - Make sure includes are sensible? - Which ones should be hidden? Maybe a pre-compiled header is easier.
  - Add .o files and executables to a .gitignore
- - Add more Input methods?
+ - Get rid of line class? Can't I just move it all into Renderer::DrawLine()?
  - Shaders
 	 = Write Hollow Polygon shader? Or something? idk how to deal with unknown no. of vertices
  	 = Write filled polygon shader? ^^^^^^^^^^^^^
