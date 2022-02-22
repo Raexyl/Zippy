@@ -10,7 +10,7 @@ class Game : public App
 	void OnStart()
 	{
 		Renderer::SetWindowTitle("My Application");
-		Renderer::SetWindowSize(100, 100);
+		Renderer::SetWindowSize(800, 450);
 	}
 
 	void OnUpdate()
