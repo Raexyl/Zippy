@@ -2,6 +2,10 @@
 Basic 2D Rendering Engine (Linux Only)
 
 Todo: -
+ - Automated Documentation?
+ - What is the architecture of this game engine?
+ - Should I use CMake?
+
  - Make sure includes are sensible? - Which ones should be hidden? Maybe a pre-compiled header is easier.
  - Does TheCherno have a better way of abstracting glfw?
  - Add .o files and executables to a .gitignore
