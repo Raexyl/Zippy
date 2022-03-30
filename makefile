@@ -61,6 +61,10 @@ buildDirCheck:
 objDirCheck:
 	mkdir -p $(OBJ_DIR)
 
+#create doxygen documentation (assumes config file exists)
+docs:
+	doxygen
+
 clean:
 	rm $(OBJ_DIR)/* -f
 	rm $(BUILD_DIR)/* -f

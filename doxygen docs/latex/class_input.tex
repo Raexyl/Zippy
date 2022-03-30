@@ -1,0 +1,42 @@
+\hypertarget{class_input}{}\doxysection{Input Class Reference}
+\label{class_input}\index{Input@{Input}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_input_a961dc8386a03428cb07effb524f36731}\label{class_input_a961dc8386a03428cb07effb524f36731}} 
+{\bfseries Input} (const \mbox{\hyperlink{class_input}{Input}} \&)=delete
+\item 
+\mbox{\Hypertarget{class_input_a77904a7722fa69006c22a55bb80abf3c}\label{class_input_a77904a7722fa69006c22a55bb80abf3c}} 
+\mbox{\hyperlink{class_input}{Input}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_input}{Input}} \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_input_ae7082ac521dd6d7dd082848b183242ff}\label{class_input_ae7082ac521dd6d7dd082848b183242ff}} 
+static \mbox{\hyperlink{class_input}{Input}} \& {\bfseries Get} ()
+\item 
+static bool \mbox{\hyperlink{class_input_a5f161b5e0e8239b7e4ccc30a326f9a38}{Get\+Key\+Press}} (unsigned int key\+Code)
+\begin{DoxyCompactList}\small\item\em Returns whether a key is pressed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_input_a088d938bb9b6a59adc7b25285e6e96a3}\label{class_input_a088d938bb9b6a59adc7b25285e6e96a3}} 
+static void {\bfseries Poll\+Events} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_input_a5f161b5e0e8239b7e4ccc30a326f9a38}\label{class_input_a5f161b5e0e8239b7e4ccc30a326f9a38}} 
+\index{Input@{Input}!GetKeyPress@{GetKeyPress}}
+\index{GetKeyPress@{GetKeyPress}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{GetKeyPress()}{GetKeyPress()}}
+{\footnotesize\ttfamily bool Input\+::\+Get\+Key\+Press (\begin{DoxyParamCaption}\item[{unsigned int}]{key\+Code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns whether a key is pressed. 
+
+Returns true if the specified key is held down, and false if it is not. Specify the key with GLFW\+\_\+\+KEY\+\_\+$<$character$>$. E.\+g. GLFW\+\_\+\+KEY\+\_\+Q indicates the button for \textquotesingle{}Q\textquotesingle{} on the keyboard. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Input.\+h\item 
+src/Core.\+cpp\item 
+src/Input.\+cpp\end{DoxyCompactItemize}

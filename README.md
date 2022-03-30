@@ -2,7 +2,7 @@
 Basic 2D Rendering Engine (Linux Only)
 
 Todo: -
- - Automated Documentation?
+ - Automated Documentation? - Trying doxygen at the moment.
  - What is the architecture of this game engine?
  - Should I use CMake?
 
@@ -25,7 +25,7 @@ Project Aims: -
 Build instructions for Linux only: - 
  - Clone git repository.
  - cd into it (or open the repository in the terminal)
- - run "make clean" in the terminal
+ - run "make" in the terminal
  - cd into the build directory
  - call "./Zippy" in the terminal
 

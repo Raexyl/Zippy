@@ -1,0 +1,95 @@
+\hypertarget{_renderer_8h_source}{}\doxysection{Renderer.\+h}
+\label{_renderer_8h_source}\index{src/Renderer.h@{src/Renderer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef RENDERER\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define RENDERER\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{//Logging (\& debugging)}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{//External includes}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <GLFW/glfw3.h>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <glm/glm.hpp>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{comment}{//Files from this project}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}Shader.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}Line.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}Logger.h"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{comment}{//Singleton!}}
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{class_renderer}{Renderer}}}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20     \textcolor{comment}{/* -\/-\/-\/-\/-\/ Enforce singleton status -\/-\/-\/-\/-\/ */}}
+\DoxyCodeLine{21 \textcolor{keyword}{public}:}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_renderer}{Renderer}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_renderer}{Renderer}}\&) = \textcolor{keyword}{delete}; \textcolor{comment}{//Delete copy constructor}}
+\DoxyCodeLine{23     \mbox{\hyperlink{class_renderer}{Renderer}}\& operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_renderer}{Renderer}}\&) = \textcolor{keyword}{delete};  \textcolor{comment}{//Delete assignment operator}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keyword}{static} \mbox{\hyperlink{class_renderer}{Renderer}}\& Get()}
+\DoxyCodeLine{26     \{}
+\DoxyCodeLine{27         \textcolor{keywordflow}{return} instance;}
+\DoxyCodeLine{28     \}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{keyword}{private}:}
+\DoxyCodeLine{31     \mbox{\hyperlink{class_renderer}{Renderer}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} height, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* windowTitle);}
+\DoxyCodeLine{32     \textcolor{keyword}{static} \mbox{\hyperlink{class_renderer}{Renderer}} instance;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{comment}{/* -\/-\/-\/-\/-\/ Regular class stuff -\/-\/-\/-\/-\/ */}}
+\DoxyCodeLine{35 \textcolor{keyword}{private}:}
+\DoxyCodeLine{36     \mbox{\hyperlink{class_shader}{Shader}} m\_LineShader; \textcolor{comment}{//Default shaders}}
+\DoxyCodeLine{37     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} m\_Width, m\_Height;}
+\DoxyCodeLine{38     GLFWwindow* m\_Window;}
+\DoxyCodeLine{39     \textcolor{keywordtype}{bool} successfulInitialisation = \textcolor{keyword}{false};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keyword}{public}:}
+\DoxyCodeLine{42     \mbox{\hyperlink{class_renderer}{\string~Renderer}}();}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{comment}{//Get methods}}
+\DoxyCodeLine{45     \textcolor{keyword}{static} GLFWwindow* GetWindow();}
+\DoxyCodeLine{46     \textcolor{keyword}{static} glm::vec2 GetScreenDimensions();}
+\DoxyCodeLine{47     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} InitialisedSuccessfully();}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{comment}{//Setup stuff}}
+\DoxyCodeLine{50     \textcolor{keyword}{static} \textcolor{keywordtype}{void} SetWindowTitle(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keywordtype}{string});}
+\DoxyCodeLine{51     \textcolor{keyword}{static} \textcolor{keywordtype}{void} SetWindowSize(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     \textcolor{comment}{//Render Loop methods}}
+\DoxyCodeLine{54     \textcolor{keyword}{static} \textcolor{keywordtype}{void} SwapBuffers();}
+\DoxyCodeLine{55     \textcolor{keyword}{static} \textcolor{keywordtype}{void} ClearColor(glm::vec4 color);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     \textcolor{comment}{//Render things!}}
+\DoxyCodeLine{58     \textcolor{keyword}{static} \textcolor{keywordtype}{void} DrawLine(\mbox{\hyperlink{class_line}{Line}}* line);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     \textcolor{comment}{//Callbacks}}
+\DoxyCodeLine{61     \textcolor{keyword}{static} \textcolor{keywordtype}{void} framebuffer\_size\_callback(GLFWwindow* window, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{keyword}{private}:}
+\DoxyCodeLine{64     \textcolor{comment}{//Get methods}}
+\DoxyCodeLine{65     GLFWwindow* HiddenGetWindow();}
+\DoxyCodeLine{66     glm::vec2 HiddenGetScreenDimensions();}
+\DoxyCodeLine{67     \textcolor{keywordtype}{bool} HiddenInitialisedSuccessfully();}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     \textcolor{comment}{//Setup}}
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} HiddenSetWindowTitle(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keywordtype}{string});}
+\DoxyCodeLine{71     \textcolor{keywordtype}{void} HiddenSetWindowSize(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{comment}{//Render Loop methods}}
+\DoxyCodeLine{74     \textcolor{keywordtype}{void} HiddenSwapBuffers();}
+\DoxyCodeLine{75     \textcolor{keywordtype}{void} HiddenClearColor(glm::vec4 color);}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{comment}{//Render things!}}
+\DoxyCodeLine{78     \textcolor{keywordtype}{void} HiddenDrawLine(\mbox{\hyperlink{class_line}{Line}}* line);}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80     \textcolor{comment}{//Callbacks}}
+\DoxyCodeLine{81     \textcolor{keywordtype}{void} hidden\_framebuffer\_size\_callback(GLFWwindow* window, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{82 \};}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{comment}{/* -\/-\/-\/-\/-\/ GLFW CALLBACKS! -\/-\/-\/-\/-\/ */}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{keywordtype}{void} framebuffer\_size\_callback(GLFWwindow* window, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{87 \textcolor{keywordtype}{void} error\_callback(\textcolor{keywordtype}{int} error, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* description);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

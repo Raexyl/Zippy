@@ -1,0 +1,34 @@
+\hypertarget{_shader_8h_source}{}\doxysection{Shader.\+h}
+\label{_shader_8h_source}\index{src/Shader.h@{src/Shader.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef SHADER\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define SHADER\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}glad/glad.h"{}} \textcolor{comment}{// include glad to get all the required OpenGL headers}}
+\DoxyCodeLine{5   }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_shader}{Shader}}}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14     \textcolor{comment}{// the program ID}}
+\DoxyCodeLine{15     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ID;}
+\DoxyCodeLine{16   }
+\DoxyCodeLine{17     \textcolor{comment}{// constructor reads and builds the shader}}
+\DoxyCodeLine{18     \mbox{\hyperlink{class_shader}{Shader}}();}
+\DoxyCodeLine{19     \mbox{\hyperlink{class_shader}{Shader}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* vertexPath, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* fragmentPath, \textcolor{keywordtype}{int}* successState);}
+\DoxyCodeLine{20     \textcolor{comment}{// use/activate the shader}}
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} use();}
+\DoxyCodeLine{22     \textcolor{comment}{// utility uniform functions}}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} setBool(\textcolor{keyword}{const} std::string \&name, \textcolor{keywordtype}{bool} value) \textcolor{keyword}{const};  }
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} setInt(\textcolor{keyword}{const} std::string \&name, \textcolor{keywordtype}{int} value) \textcolor{keyword}{const};   }
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} setFloat(\textcolor{keyword}{const} std::string \&name, \textcolor{keywordtype}{float} value) \textcolor{keyword}{const};}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27   }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

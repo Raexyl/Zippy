@@ -1,0 +1,38 @@
+\hypertarget{_input_8h_source}{}\doxysection{Input.\+h}
+\label{_input_8h_source}\index{src/Input.h@{src/Input.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef INPUT\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define INPUT\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{class }\mbox{\hyperlink{class_input}{Input}}}
+\DoxyCodeLine{5 \{}
+\DoxyCodeLine{6     \textcolor{comment}{/* -\/-\/-\/-\/-\/ Enforce singleton status -\/-\/-\/-\/-\/ */}}
+\DoxyCodeLine{7 \textcolor{keyword}{public}:}
+\DoxyCodeLine{8     \mbox{\hyperlink{class_input}{Input}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_input}{Input}}\&) = \textcolor{keyword}{delete}; \textcolor{comment}{//Delete copy constructor}}
+\DoxyCodeLine{9     \mbox{\hyperlink{class_input}{Input}}\& operator=(\textcolor{keyword}{const} \mbox{\hyperlink{class_input}{Input}}\&) = \textcolor{keyword}{delete};  \textcolor{comment}{//Delete assignment operator}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11     \textcolor{keyword}{static} \mbox{\hyperlink{class_input}{Input}}\& Get()}
+\DoxyCodeLine{12     \{}
+\DoxyCodeLine{13         \textcolor{keywordflow}{return} instance;}
+\DoxyCodeLine{14     \}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{private}:}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_input}{Input}}(\textcolor{keywordtype}{int} x); \textcolor{comment}{//For some reason the constructor needs an argument!? Even if the argument does nothing!?}}
+\DoxyCodeLine{18     \textcolor{keyword}{static} \mbox{\hyperlink{class_input}{Input}} instance;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{comment}{/* -\/-\/-\/-\/-\/ Regular class stuff -\/-\/-\/-\/-\/ */}}
+\DoxyCodeLine{21 \textcolor{keyword}{public}:}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_input}{\string~Input}}();}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_input_a5f161b5e0e8239b7e4ccc30a326f9a38}{GetKeyPress}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} keyCode);}
+\DoxyCodeLine{32     \textcolor{keyword}{static} \textcolor{keywordtype}{void} PollEvents(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keyword}{private}:}
+\DoxyCodeLine{35     \textcolor{keywordtype}{bool} HiddenGetKeyPress(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} keyCode);}
+\DoxyCodeLine{36     \textcolor{keywordtype}{void} HiddenPollEvents(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{37 \};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
