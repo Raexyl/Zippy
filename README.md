@@ -8,7 +8,6 @@ Todo: -
 
  - Make sure includes are sensible? - Which ones should be hidden? Maybe a pre-compiled header is easier.
  - Does TheCherno have a better way of abstracting glfw?
- - Add .o files and executables to a .gitignore
  - Get rid of line class? Can't I just move it all into Renderer::DrawLine()?
  - Shaders
 	 = Write Hollow Polygon shader? Or something? idk how to deal with unknown no. of vertices
