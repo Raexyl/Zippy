@@ -43,23 +43,25 @@ else
 endif
 
 #link .o files
-$(PROJECT_NAME): $(OBJ_FILES) 				
+$(PROJECT_NAME): $(OBJ_FILES) | buildDirCheck
 	g++ -o $@ $^ $(LDFLAGS) 
 	mv $@ $(BUILD_DIR)/
 
 #compile .cpp files
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | objDirCheck
 	g++ $(CPP_FLAGS) -fPIC $(INCLUDEFLAGS) -c -o $@ $<
 
 #compile .c files
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | objDirCheck
 	g++ $(CPP_FLAGS) -fPIC $(INCLUDEFLAGS) -c -o $@ $<
+
+buildDirCheck:
+	mkdir -p $(BUILD_DIR)
+
+objDirCheck:
+	mkdir -p $(OBJ_DIR)
 
 clean:
 	rm $(OBJ_DIR)/* -f
 	rm $(BUILD_DIR)/* -f
 	make
-
-#DON'T USE THIS! must cd into build directory first
-run:
-	./build/$(PROJECT_NAME)
