@@ -22,7 +22,7 @@ public:
 	~Input();
 
 	static bool GetKeyPress(unsigned int keyCode);
-	/*!< \brief Returns whether a key is pressed.
+/*!< \brief Returns whether a key is pressed.
  *
  *	Returns true if the specified key is held down, and false if it is not.
  *	Specify the key with GLFW_KEY_<character>.
@@ -30,6 +30,10 @@ public:
  */
 
 	static void PollEvents(void);
+/*!< \brief Checks for input events.
+ *
+ *	Simply runs glfwPollEvents(). Should be called every frame, ideally in App::OnUpdate().
+ */
 
 private:
 	bool HiddenGetKeyPress(unsigned int keyCode);

@@ -17,9 +17,8 @@ static \mbox{\hyperlink{class_input}{Input}} \& {\bfseries Get} ()
 \item 
 static bool \mbox{\hyperlink{class_input_a5f161b5e0e8239b7e4ccc30a326f9a38}{Get\+Key\+Press}} (unsigned int key\+Code)
 \begin{DoxyCompactList}\small\item\em Returns whether a key is pressed. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_input_a088d938bb9b6a59adc7b25285e6e96a3}\label{class_input_a088d938bb9b6a59adc7b25285e6e96a3}} 
-static void {\bfseries Poll\+Events} (void)
-\end{DoxyCompactItemize}
+static void \mbox{\hyperlink{class_input_a088d938bb9b6a59adc7b25285e6e96a3}{Poll\+Events}} (void)
+\begin{DoxyCompactList}\small\item\em Checks for input events. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
@@ -33,7 +32,17 @@ static void {\bfseries Poll\+Events} (void)
 
 Returns whether a key is pressed. 
 
-Returns true if the specified key is held down, and false if it is not. Specify the key with GLFW\+\_\+\+KEY\+\_\+$<$character$>$. E.\+g. GLFW\+\_\+\+KEY\+\_\+Q indicates the button for \textquotesingle{}Q\textquotesingle{} on the keyboard. 
+Returns true if the specified key is held down, and false if it is not. Specify the key with GLFW\+\_\+\+KEY\+\_\+$<$character$>$. E.\+g. GLFW\+\_\+\+KEY\+\_\+Q indicates the button for \textquotesingle{}Q\textquotesingle{} on the keyboard. \mbox{\Hypertarget{class_input_a088d938bb9b6a59adc7b25285e6e96a3}\label{class_input_a088d938bb9b6a59adc7b25285e6e96a3}} 
+\index{Input@{Input}!PollEvents@{PollEvents}}
+\index{PollEvents@{PollEvents}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{PollEvents()}{PollEvents()}}
+{\footnotesize\ttfamily void Input\+::\+Poll\+Events (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Checks for input events. 
+
+Simply runs glfw\+Poll\+Events(). Should be called every frame, ideally in \mbox{\hyperlink{class_app_a60e757fadfbb9a905513eaed0884f740}{App\+::\+On\+Update()}}. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

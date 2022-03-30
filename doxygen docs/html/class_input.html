@@ -87,8 +87,8 @@ static <a class="el" href="class_input.html">Input</a> &amp;&#160;</td><td class
 <tr class="memitem:a5f161b5e0e8239b7e4ccc30a326f9a38"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input.html#a5f161b5e0e8239b7e4ccc30a326f9a38">GetKeyPress</a> (unsigned int keyCode)</td></tr>
 <tr class="memdesc:a5f161b5e0e8239b7e4ccc30a326f9a38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether a key is pressed.  <a href="class_input.html#a5f161b5e0e8239b7e4ccc30a326f9a38">More...</a><br /></td></tr>
 <tr class="separator:a5f161b5e0e8239b7e4ccc30a326f9a38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a088d938bb9b6a59adc7b25285e6e96a3"><td class="memItemLeft" align="right" valign="top"><a id="a088d938bb9b6a59adc7b25285e6e96a3" name="a088d938bb9b6a59adc7b25285e6e96a3"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>PollEvents</b> (void)</td></tr>
+<tr class="memitem:a088d938bb9b6a59adc7b25285e6e96a3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input.html#a088d938bb9b6a59adc7b25285e6e96a3">PollEvents</a> (void)</td></tr>
+<tr class="memdesc:a088d938bb9b6a59adc7b25285e6e96a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for input events.  <a href="class_input.html#a088d938bb9b6a59adc7b25285e6e96a3">More...</a><br /></td></tr>
 <tr class="separator:a088d938bb9b6a59adc7b25285e6e96a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -118,6 +118,35 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>PollEvents</b>
 
 <p>Returns whether a key is pressed. </p>
 <p >Returns true if the specified key is held down, and false if it is not. Specify the key with GLFW_KEY_&lt;character&gt;. E.g. GLFW_KEY_Q indicates the button for 'Q' on the keyboard. </p>
+
+</div>
+</div>
+<a id="a088d938bb9b6a59adc7b25285e6e96a3" name="a088d938bb9b6a59adc7b25285e6e96a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a088d938bb9b6a59adc7b25285e6e96a3">&#9670;&nbsp;</a></span>PollEvents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Input::PollEvents </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks for input events. </p>
+<p >Simply runs glfwPollEvents(). Should be called every frame, ideally in <a class="el" href="class_app.html#a60e757fadfbb9a905513eaed0884f740" title="Automatically called once for each frame.">App::OnUpdate()</a>. </p>
 
 </div>
 </div>

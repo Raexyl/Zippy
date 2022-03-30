@@ -9,31 +9,85 @@ Inheritance diagram for App\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_app_a5e1ff54b2703ede053c61ddf3d3b393b}\label{class_app_a5e1ff54b2703ede053c61ddf3d3b393b}} 
-virtual void {\bfseries On\+Start} ()
-\item 
-\mbox{\Hypertarget{class_app_a60e757fadfbb9a905513eaed0884f740}\label{class_app_a60e757fadfbb9a905513eaed0884f740}} 
-virtual void {\bfseries On\+Update} ()
-\item 
-\mbox{\Hypertarget{class_app_a27f10cdb9d595cf8c9f4e2303a74b433}\label{class_app_a27f10cdb9d595cf8c9f4e2303a74b433}} 
-virtual void {\bfseries On\+Render} ()
-\item 
-\mbox{\Hypertarget{class_app_aef7d8c3e228857dcc333e19e9efeeda7}\label{class_app_aef7d8c3e228857dcc333e19e9efeeda7}} 
-virtual void {\bfseries On\+End} ()
-\item 
-\mbox{\Hypertarget{class_app_ae2c39ee3dacbd68bb503fea95a4f892c}\label{class_app_ae2c39ee3dacbd68bb503fea95a4f892c}} 
-void {\bfseries Initialise\+Window} (unsigned int width, unsigned int height, const char $\ast$window\+Title)
-\item 
-\mbox{\Hypertarget{class_app_a9caab0ab676188633eff9e744b2efbf2}\label{class_app_a9caab0ab676188633eff9e744b2efbf2}} 
-bool {\bfseries Is\+Quitting} ()
-\end{DoxyCompactItemize}
+virtual void \mbox{\hyperlink{class_app_a5e1ff54b2703ede053c61ddf3d3b393b}{On\+Start}} ()
+\begin{DoxyCompactList}\small\item\em Automatically dalled before the app\textquotesingle{}s first frame. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_app_a60e757fadfbb9a905513eaed0884f740}{On\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Automatically called once for each frame. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_app_a27f10cdb9d595cf8c9f4e2303a74b433}{On\+Render}} ()
+\begin{DoxyCompactList}\small\item\em Automatically called to render a frame. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_app_aef7d8c3e228857dcc333e19e9efeeda7}{On\+End}} ()
+\begin{DoxyCompactList}\small\item\em Automatically called after \mbox{\hyperlink{class_app_ad76985d9eeb1eb7cb2fa0804428bd2da}{App\+::\+Quit()}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_app_a9caab0ab676188633eff9e744b2efbf2}{Is\+Quitting}} ()
+\begin{DoxyCompactList}\small\item\em Returns true if the application is exiting. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_app_ad76985d9eeb1eb7cb2fa0804428bd2da}\label{class_app_ad76985d9eeb1eb7cb2fa0804428bd2da}} 
-void {\bfseries Quit} ()
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_app_ad76985d9eeb1eb7cb2fa0804428bd2da}{Quit}} ()
+\begin{DoxyCompactList}\small\item\em Quits the application. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_app_a9caab0ab676188633eff9e744b2efbf2}\label{class_app_a9caab0ab676188633eff9e744b2efbf2}} 
+\index{App@{App}!IsQuitting@{IsQuitting}}
+\index{IsQuitting@{IsQuitting}!App@{App}}
+\doxysubsubsection{\texorpdfstring{IsQuitting()}{IsQuitting()}}
+{\footnotesize\ttfamily bool App\+::\+Is\+Quitting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns true if the application is exiting. 
+
+Returns true if the application has been told to exit in this frame. Either by \mbox{\hyperlink{class_app_ad76985d9eeb1eb7cb2fa0804428bd2da}{App\+::\+Quit()}} or by closing the window. \mbox{\Hypertarget{class_app_aef7d8c3e228857dcc333e19e9efeeda7}\label{class_app_aef7d8c3e228857dcc333e19e9efeeda7}} 
+\index{App@{App}!OnEnd@{OnEnd}}
+\index{OnEnd@{OnEnd}!App@{App}}
+\doxysubsubsection{\texorpdfstring{OnEnd()}{OnEnd()}}
+{\footnotesize\ttfamily void App\+::\+On\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Automatically called after \mbox{\hyperlink{class_app_ad76985d9eeb1eb7cb2fa0804428bd2da}{App\+::\+Quit()}}. 
+
+Override this method in your \mbox{\hyperlink{class_app}{App}} derivative, and it\textquotesingle{}s content will be executed once after \mbox{\hyperlink{class_app_ad76985d9eeb1eb7cb2fa0804428bd2da}{App\+::\+Quit()}} runs. This is where you should prepare your application to exit (e.\+g. clean up memory, de-\/allocate resources.) \mbox{\Hypertarget{class_app_a27f10cdb9d595cf8c9f4e2303a74b433}\label{class_app_a27f10cdb9d595cf8c9f4e2303a74b433}} 
+\index{App@{App}!OnRender@{OnRender}}
+\index{OnRender@{OnRender}!App@{App}}
+\doxysubsubsection{\texorpdfstring{OnRender()}{OnRender()}}
+{\footnotesize\ttfamily void App\+::\+On\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Automatically called to render a frame. 
+
+Override this method in your \mbox{\hyperlink{class_app}{App}} derivative, and it\textquotesingle{}s content will be executed once per frame, after \mbox{\hyperlink{class_app_a60e757fadfbb9a905513eaed0884f740}{App\+::\+On\+Update()}}. This is where you should run all of your rendering-\/related code. \mbox{\Hypertarget{class_app_a5e1ff54b2703ede053c61ddf3d3b393b}\label{class_app_a5e1ff54b2703ede053c61ddf3d3b393b}} 
+\index{App@{App}!OnStart@{OnStart}}
+\index{OnStart@{OnStart}!App@{App}}
+\doxysubsubsection{\texorpdfstring{OnStart()}{OnStart()}}
+{\footnotesize\ttfamily void App\+::\+On\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Automatically dalled before the app\textquotesingle{}s first frame. 
+
+Override this method in your \mbox{\hyperlink{class_app}{App}} derivative, and it\textquotesingle{}s content will be executed before the first frame is run (before \mbox{\hyperlink{class_app_a60e757fadfbb9a905513eaed0884f740}{App\+::\+On\+Update()}} and \mbox{\hyperlink{class_app_a27f10cdb9d595cf8c9f4e2303a74b433}{App\+::\+On\+Render()}} are first called.) \mbox{\Hypertarget{class_app_a60e757fadfbb9a905513eaed0884f740}\label{class_app_a60e757fadfbb9a905513eaed0884f740}} 
+\index{App@{App}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!App@{App}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily void App\+::\+On\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Automatically called once for each frame. 
+
+Override this method in your \mbox{\hyperlink{class_app}{App}} derivative, and it\textquotesingle{}s content will be executed during each frame, before \mbox{\hyperlink{class_app_a27f10cdb9d595cf8c9f4e2303a74b433}{App\+::\+On\+Render()}}. This is where you should run all of your non-\/rendering-\/related game code. \mbox{\Hypertarget{class_app_ad76985d9eeb1eb7cb2fa0804428bd2da}\label{class_app_ad76985d9eeb1eb7cb2fa0804428bd2da}} 
+\index{App@{App}!Quit@{Quit}}
+\index{Quit@{Quit}!App@{App}}
+\doxysubsubsection{\texorpdfstring{Quit()}{Quit()}}
+{\footnotesize\ttfamily void App\+::\+Quit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Quits the application. 
+
+Call this method to exit the application after this frame is complete. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

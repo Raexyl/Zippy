@@ -2,19 +2,19 @@
 Basic 2D Rendering Engine (Linux Only)
 
 Todo: -
- - Automated Documentation? - Trying doxygen at the moment.
  - What is the architecture of this game engine?
- - Should I use CMake?
+	 - Scene
+	 	 - GameObjects
+		  	- Components
 
- - Make sure includes are sensible? - Which ones should be hidden? Maybe a pre-compiled header is easier.
+ - Automated Documentation? - Trying doxygen at the moment.
+	- Describe exposed methods, members, functions and classes. (Using .h files for this)
+ - Should I use CMake? - Only if I make this windows-compatible. Otherwise the makefile is fine for linux-only.
+
+ - Should I use a pre-compiled header?
  - Does TheCherno have a better way of abstracting glfw?
  - Get rid of line class? Can't I just move it all into Renderer::DrawLine()?
- - Shaders
-	 = Write Hollow Polygon shader? Or something? idk how to deal with unknown no. of vertices
- 	 = Write filled polygon shader? ^^^^^^^^^^^^^
-   	 = Write texture shader.
- - Windows compatibility?
- - Convert to dynamic library? (.dll and .so)
+ - Convert to dynamic lib (.so)?
  - Time singleton?
 
 Project Aims: -
