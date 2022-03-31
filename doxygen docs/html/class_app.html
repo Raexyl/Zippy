@@ -69,6 +69,11 @@ $(function() {
   <div class="headertitle"><div class="title">App Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Application class.  
+ <a href="class_app.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_app_8h_source.html">App.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for App:</div>
 <div class="dyncontent">
@@ -103,7 +108,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:ad76985d9eeb1eb7cb2fa0804428bd2da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quits the application.  <a href="class_app.html#ad76985d9eeb1eb7cb2fa0804428bd2da">More...</a><br /></td></tr>
 <tr class="separator:ad76985d9eeb1eb7cb2fa0804428bd2da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Application class. </p>
+<p >This class is intended to be derived from (see Game.cpp for an example.) The game code should be written inside overridden methods of this class. The class that derives from <a class="el" href="class_app.html" title="Application class.">App</a> and holds the game's code, should be instantiated in GetApp(). </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a9caab0ab676188633eff9e744b2efbf2" name="a9caab0ab676188633eff9e744b2efbf2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9caab0ab676188633eff9e744b2efbf2">&#9670;&nbsp;</a></span>IsQuitting()</h2>
 
@@ -148,7 +156,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Automatically called after <a class="el" href="class_app.html#ad76985d9eeb1eb7cb2fa0804428bd2da" title="Quits the application.">App::Quit()</a>. </p>
-<p >Override this method in your <a class="el" href="class_app.html">App</a> derivative, and it's content will be executed once after <a class="el" href="class_app.html#ad76985d9eeb1eb7cb2fa0804428bd2da" title="Quits the application.">App::Quit()</a> runs. This is where you should prepare your application to exit (e.g. clean up memory, de-allocate resources.) </p>
+<p >Override this method in your <a class="el" href="class_app.html" title="Application class.">App</a> derivative, and it's content will be executed once after <a class="el" href="class_app.html#ad76985d9eeb1eb7cb2fa0804428bd2da" title="Quits the application.">App::Quit()</a> runs. This is where you should prepare your application to exit (e.g. clean up memory, de-allocate resources.) </p>
 
 </div>
 </div>
@@ -176,7 +184,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Automatically called to render a frame. </p>
-<p >Override this method in your <a class="el" href="class_app.html">App</a> derivative, and it's content will be executed once per frame, after <a class="el" href="class_app.html#a60e757fadfbb9a905513eaed0884f740" title="Automatically called once for each frame.">App::OnUpdate()</a>. This is where you should run all of your rendering-related code. </p>
+<p >Override this method in your <a class="el" href="class_app.html" title="Application class.">App</a> derivative, and it's content will be executed once per frame, after <a class="el" href="class_app.html#a60e757fadfbb9a905513eaed0884f740" title="Automatically called once for each frame.">App::OnUpdate()</a>. This is where you should run all of your rendering-related code. </p>
 
 </div>
 </div>
@@ -204,7 +212,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Automatically dalled before the app's first frame. </p>
-<p >Override this method in your <a class="el" href="class_app.html">App</a> derivative, and it's content will be executed before the first frame is run (before <a class="el" href="class_app.html#a60e757fadfbb9a905513eaed0884f740" title="Automatically called once for each frame.">App::OnUpdate()</a> and <a class="el" href="class_app.html#a27f10cdb9d595cf8c9f4e2303a74b433" title="Automatically called to render a frame.">App::OnRender()</a> are first called.) </p>
+<p >Override this method in your <a class="el" href="class_app.html" title="Application class.">App</a> derivative, and it's content will be executed before the first frame is run (before <a class="el" href="class_app.html#a60e757fadfbb9a905513eaed0884f740" title="Automatically called once for each frame.">App::OnUpdate()</a> and <a class="el" href="class_app.html#a27f10cdb9d595cf8c9f4e2303a74b433" title="Automatically called to render a frame.">App::OnRender()</a> are first called.) </p>
 
 </div>
 </div>
@@ -232,7 +240,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Automatically called once for each frame. </p>
-<p >Override this method in your <a class="el" href="class_app.html">App</a> derivative, and it's content will be executed during each frame, before <a class="el" href="class_app.html#a27f10cdb9d595cf8c9f4e2303a74b433" title="Automatically called to render a frame.">App::OnRender()</a>. This is where you should run all of your non-rendering-related game code. </p>
+<p >Override this method in your <a class="el" href="class_app.html" title="Application class.">App</a> derivative, and it's content will be executed during each frame, before <a class="el" href="class_app.html#a27f10cdb9d595cf8c9f4e2303a74b433" title="Automatically called to render a frame.">App::OnRender()</a>. This is where you should run all of your non-rendering-related game code. </p>
 
 </div>
 </div>

@@ -9,6 +9,11 @@ Todo: -
 
  - Automated Documentation? - Trying doxygen at the moment.
 	- Describe exposed methods, members, functions and classes. (Using .h files for this)
+		 - Todo: -
+		 	 - Renderer.h
+			 - Line.h?
+			 - Shader.h
+			 
  - Should I use CMake? - Only if I make this windows-compatible. Otherwise the makefile is fine for linux-only.
 
  - Should I use a pre-compiled header?

@@ -1,5 +1,14 @@
 \hypertarget{class_app}{}\doxysection{App Class Reference}
 \label{class_app}\index{App@{App}}
+
+
+Application class.  
+
+
+
+
+{\ttfamily \#include $<$App.\+h$>$}
+
 Inheritance diagram for App\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,6 +34,11 @@ bool \mbox{\hyperlink{class_app_a9caab0ab676188633eff9e744b2efbf2}{Is\+Quitting}
 void \mbox{\hyperlink{class_app_ad76985d9eeb1eb7cb2fa0804428bd2da}{Quit}} ()
 \begin{DoxyCompactList}\small\item\em Quits the application. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Application class. 
+
+This class is intended to be derived from (see Game.\+cpp for an example.) The game code should be written inside overridden methods of this class. The class that derives from \mbox{\hyperlink{class_app}{App}} and holds the game\textquotesingle{}s code, should be instantiated in Get\+App(). 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_app_a9caab0ab676188633eff9e744b2efbf2}\label{class_app_a9caab0ab676188633eff9e744b2efbf2}} 

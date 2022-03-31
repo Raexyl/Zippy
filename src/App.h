@@ -55,5 +55,13 @@ class App
  *	Call this method to exit the application after this frame is complete.
  */
 };
+/*!< \brief Application class.
+ *
+ *	This class is intended to be derived from (see Game.cpp for an example.)
+ *	The game code should be written inside overridden methods of this class.
+ *	The class that derives from App and holds the game's code, should be
+ *	instantiated in GetApp().
+ */
+
 
 #endif
