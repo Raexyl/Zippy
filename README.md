@@ -1,31 +1,10 @@
 # Zippy
 Basic 2D Rendering Engine (Linux Only)
 
-Todo: -
- - What is the architecture of this game engine?
-	 - Scene
-	 	 - GameObjects
-		  	- Components
-
- - Automated Documentation? - Trying doxygen at the moment.
-	- Describe exposed methods, members, functions and classes. (Using .h files for this)
-		 - Todo: -
-		 	 - Renderer.h
-			 - Line.h?
-			 - Shader.h
-			 
- - Should I use CMake? - Only if I make this windows-compatible. Otherwise the makefile is fine for linux-only.
-
- - Should I use a pre-compiled header?
- - Does TheCherno have a better way of abstracting glfw?
- - Get rid of line class? Can't I just move it all into Renderer::DrawLine()?
- - Convert to dynamic lib (.so)?
- - Time singleton?
-
-Project Aims: -
- - Draw hollow polygons.
- - Draw filled polygons.
- - Apply textures to shapes.
+Engine Architecture:
+ - Scene
+ 	 - GameObjects
+	  	- Components
 
 Build instructions for Linux only: - 
  - Clone git repository.
@@ -35,3 +14,25 @@ Build instructions for Linux only: -
  - call "./Zippy" in the terminal
 
  - If you wish to change the application, edit Game.cpp as you wish, then rebuild as above.
+
+Project Aims: -
+ - Draw hollow polygons.
+ - Draw filled polygons.
+ - Apply textures to shapes.
+ - Create gameobject class
+ - Create component class/interface?
+ - Create renderer component
+ - Create collider component
+ - Create rigidbody component
+
+Todo: -
+ - Implement a window class as below:
+ 	- https://www.youtube.com/watch?v=5mlziHwq90k&list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT&index=8
+
+ - Should I use a pre-compiled header?
+ - Convert to dynamic lib (.so)
+
+Answered Questions: -
+  - Should I use CMake? - Only if I make this windows-compatible. Otherwise the makefile is fine for linux-only.
+
+

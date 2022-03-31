@@ -1,4 +1,5 @@
 #include "Renderer.h"
+#include "Shader.h"
 
 Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTitle)
 	:m_Width(width), m_Height(height)
