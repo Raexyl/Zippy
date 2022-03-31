@@ -1,5 +1,7 @@
 #include "Renderer.h"
-#include "Shader.h"
+
+#include "Logger.h"
+
 
 Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTitle)
 	:m_Width(width), m_Height(height)

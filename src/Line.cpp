@@ -1,5 +1,7 @@
 #include "Line.h"
 
+#include <glad/glad.h>
+
 Line::Line()
 {
 }

@@ -2,7 +2,6 @@
 #define LINE_H
 
 #include <glm/glm.hpp>
-#include <glad/glad.h>
 
 class Line {
     unsigned int VBO, VAO;

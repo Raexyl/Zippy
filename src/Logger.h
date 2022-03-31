@@ -1,8 +1,6 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
-#include <iostream>
-
 namespace Logger
 {
 	enum logLevel 

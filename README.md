@@ -26,8 +26,10 @@ Project Aims: -
  - Create rigidbody component
 
 Todo: -
- - Implement a window class as below:
- 	- https://www.youtube.com/watch?v=5mlziHwq90k&list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT&index=8
+ - See Core.h --> Renderer.h include should not provide end user access to glad, glfw, Shader.h or Line.h?
+ 
+ - Input should be a namespace...
+ - End user should NOT have access to glad/glfw functions.
  - Convert to dynamic lib (.so)
 
 Questions: -
@@ -36,5 +38,7 @@ Questions: -
 Answered Questions: -
   - Should I use CMake?
  	 - Only if I make this windows-compatible. Otherwise the makefile is fine for linux-only.
+  - Do we need a Window class? 
+	 - It seems simpler without one... The renderer holds a pointer to the window, which is accessible with Renderer::GetWindow(). Ideally we hide this from the end user.
 
 

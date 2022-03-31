@@ -1,5 +1,9 @@
 #include "App.h"
 
+#include "Renderer.h"
+#include "Input.h"
+#include "Logger.h"
+
  
 App::App()
 {

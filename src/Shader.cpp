@@ -1,6 +1,9 @@
 #include "Shader.h"
 
 #include "Logger.h"
+#include <fstream>
+#include <sstream>
+#include <iostream>
 
 Shader::Shader()
 {

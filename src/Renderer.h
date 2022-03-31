@@ -12,7 +12,6 @@
 //Files from this project
 #include "Shader.h"
 #include "Line.h"
-#include "Logger.h"
 
 //Singleton!
 class Renderer
