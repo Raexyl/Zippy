@@ -27,9 +27,8 @@ Project Aims: -
 
 Todo: -
  - See Core.h --> Renderer.h include should not provide end user access to glad, glfw, Shader.h or Line.h?
- 
- - Input should be a namespace...
- - End user should NOT have access to glad/glfw functions.
+
+ - Input should be a namespace.
  - Convert to dynamic lib (.so)
 
 Questions: -
