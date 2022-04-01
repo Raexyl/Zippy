@@ -26,7 +26,7 @@ Project Aims: -
  - Create rigidbody component
 
 Todo: -
- - See Core.h --> Renderer.h include should not provide end user access to glad, glfw, Shader.h or Line.h?
+ - See Core.h --> Renderer.h includes should not provide end user access to glad, glfw, Shader.h or Line.h?
 
  - Input should be a namespace.
  - Convert to dynamic lib (.so)

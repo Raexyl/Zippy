@@ -1,18 +1,17 @@
-#Make a .so Zippy library.
-PROJECT_NAME := Zippy
+PROJECT_NAME := Sandbox
 
 #Directories
 BUILD_DIR := build
 OBJ_DIR := int
 SRC_DIR := src
-INC_DIR := ./vendor/includes
-LIB_DIR := ./vendor/libs
+INC_DIR := Zippy/includes
+LIB_DIR := Zippy
 
 #Flags
-LIBS := -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl
+LIBS := -lZippy
 INCLUDEFLAGS := -I$(INC_DIR)
-LDFLAGS := -L$(LIB_DIR) $(LIBS) -shared
-CPP_FLAGS := -Wall -g -fPIC
+LDFLAGS := -L$(LIB_DIR) $(LIBS) #-rpath='.'
+CPP_FLAGS := -Wall -g
 
 #What .o files do we need for final exectuable?
 SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp) $(wildcard $(SRC_DIR)/*.c)
@@ -45,15 +44,15 @@ endif
 
 #link .o files
 $(PROJECT_NAME): $(OBJ_FILES) | buildDirCheck
-	g++ -o lib$@.so $^ $(LDFLAGS) 
-	mv lib$@.so $(BUILD_DIR)/
+	g++ -o $@ $^ $(LDFLAGS) 
+	mv $@ $(BUILD_DIR)/
 
 #compile .cpp files
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | objDirCheck
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | objDirCheck updateZippy
 	g++ $(CPP_FLAGS) -fPIC $(INCLUDEFLAGS) -c -o $@ $<
 
 #compile .c files
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | objDirCheck
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | objDirCheck updateZippy
 	g++ $(CPP_FLAGS) -fPIC $(INCLUDEFLAGS) -c -o $@ $<
 
 buildDirCheck:
@@ -62,9 +61,13 @@ buildDirCheck:
 objDirCheck:
 	mkdir -p $(OBJ_DIR)
 
-#create doxygen documentation (assumes config file exists)
-docs:
-	doxygen
+#Update Zippy includes, etc
+updateZippy:
+	mkdir -p Zippy
+	cp ../build/libZippy.so Zippy
+	mkdir -p Zippy/includes
+	cp ../src/*.h Zippy/includes
+	cp ../vendor/includes/ -r Zippy
 
 clean:
 	rm $(OBJ_DIR)/* -f
