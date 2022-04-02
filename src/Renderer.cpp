@@ -43,7 +43,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
 	//Compiling shaders...
 	Logger::Log("Compiling shaders...", Logger::logLevel::note);
 	int shaderCompilationSuccess = false;
-	m_LineShader = Shader("../shaders/lineShader.vs", "../shaders/lineShader.fs", &shaderCompilationSuccess);
+	m_LineShader = Shader("./shaders/lineShader.vs", "./shaders/lineShader.fs", &shaderCompilationSuccess);
 	if(!shaderCompilationSuccess) { return; };
 
 	successfulInitialisation = true;
