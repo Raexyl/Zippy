@@ -10,7 +10,7 @@ LIB_DIR := Zippy
 #Flags
 LIBS := -lZippy
 INCLUDEFLAGS := -I$(INC_DIR)
-LDFLAGS := -L$(LIB_DIR) $(LIBS) -Wl,-rpath,./
+LDFLAGS := -L$(LIB_DIR) $(LIBS) -Wl,-rpath,./Zippy
 CPP_FLAGS := -Wall -g
 
 #What .o files do we need for final exectuable?
@@ -42,10 +42,13 @@ else
     endif
 endif
 
-#link .o files
+#link .o files for final executable, and copy in all the files the application needs.
 $(PROJECT_NAME): $(OBJ_FILES) | buildDirCheck
 	g++ -o $@ $^ $(LDFLAGS) 
 	mv $@ $(BUILD_DIR)/
+	mkdir -p $(BUILD_DIR)/Zippy
+	mkdir -p $(BUILD_DIR)/Zippy/shaders
+	cp ../build/* $(BUILD_DIR)/Zippy -r
 
 #compile .cpp files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | objDirCheck updateZippy
@@ -61,16 +64,12 @@ buildDirCheck:
 objDirCheck:
 	mkdir -p $(OBJ_DIR)
 
-#Update Zippy includes, etc
+#Update Zippy includes, etc for sandbox dev
 updateZippy:
 	mkdir -p Zippy
-	cp ../build/libZippy.so Zippy
-	cp Zippy/libZippy.so build
 	mkdir -p Zippy/includes
 	cp ../src/*.h Zippy/includes
 	cp ../vendor/includes/ -r Zippy
-	mkdir -p build/shaders
-	cp ../build/shaders/* build/shaders
 
 clean:
 	rm $(OBJ_DIR)/* -f

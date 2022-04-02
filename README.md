@@ -10,10 +10,14 @@ Build instructions for Linux only: -
  - Clone git repository.
  - cd into it (or open the repository in the terminal)
  - run "make" in the terminal
- - cd into the build directory
- - call "./Zippy" in the terminal
+ - The library and it's shaders will now be found in the build directory.
 
- - If you want to change the application, edit Game.cpp as you wish, then rebuild and run as above.
+If you would like to compile the example too: -
+ - cd into sandbox
+ - run "make" in the terminal
+ - cd into the build directory
+ - call "./Sandbox" in the terminal, to run the app.
+ - If you want to change the example app, edit Game.cpp as you wish, then rebuild and run as above.
 
 Project Aims: -
  - Draw hollow polygons.
@@ -26,13 +30,9 @@ Project Aims: -
  - Create rigidbody component
 
 Todo: -
- - Convert to dynamic lib (.so)
-	 - Should I add the .so to main linux files? Executable can't find the dynamic library.
-
  - See Core.h --> Renderer.h includes should not provide end user access to glad, glfw, Shader.h or Line.h?
 
  - Input should be a namespace.
- - Shader directory should probably be in same folder as final executable...
 
 
 Questions: -
