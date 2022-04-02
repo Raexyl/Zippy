@@ -10,7 +10,7 @@ LIB_DIR := Zippy
 #Flags
 LIBS := -lZippy
 INCLUDEFLAGS := -I$(INC_DIR)
-LDFLAGS := -L$(LIB_DIR) $(LIBS) #-rpath='.'
+LDFLAGS := -L$(LIB_DIR) $(LIBS) -Wl,-rpath,./
 CPP_FLAGS := -Wall -g
 
 #What .o files do we need for final exectuable?
@@ -65,10 +65,13 @@ objDirCheck:
 updateZippy:
 	mkdir -p Zippy
 	cp ../build/libZippy.so Zippy
+	cp Zippy/libZippy.so build
 	mkdir -p Zippy/includes
 	cp ../src/*.h Zippy/includes
 	cp ../vendor/includes/ -r Zippy
+	mkdir -p build/shaders
+	cp ../build/shaders/* build/shaders
 
 clean:
 	rm $(OBJ_DIR)/* -f
-	rm $(BUILD_DIR)/* -f
+	rm $(BUILD_DIR)/* -f -r

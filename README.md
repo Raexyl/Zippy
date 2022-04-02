@@ -26,10 +26,14 @@ Project Aims: -
  - Create rigidbody component
 
 Todo: -
+ - Convert to dynamic lib (.so)
+	 - Should I add the .so to main linux files? Executable can't find the dynamic library.
+
  - See Core.h --> Renderer.h includes should not provide end user access to glad, glfw, Shader.h or Line.h?
 
  - Input should be a namespace.
- - Convert to dynamic lib (.so)
+ - Shader directory should probably be in same folder as final executable...
+
 
 Questions: -
  - Should I use a pre-compiled header? 

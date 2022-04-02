@@ -11,7 +11,7 @@ LIB_DIR := ./vendor/libs
 #Flags
 LIBS := -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi -ldl
 INCLUDEFLAGS := -I$(INC_DIR)
-LDFLAGS := -L$(LIB_DIR) $(LIBS) -shared
+LDFLAGS := -L$(LIB_DIR) $(LIBS) -shared -fPIC
 CPP_FLAGS := -Wall -g -fPIC
 
 #What .o files do we need for final exectuable?
@@ -47,6 +47,9 @@ endif
 $(PROJECT_NAME): $(OBJ_FILES) | buildDirCheck
 	g++ -o lib$@.so $^ $(LDFLAGS) 
 	mv lib$@.so $(BUILD_DIR)/
+	mkdir -p build/shaders
+	cp shaders/*.vs build/shaders
+	cp shaders/*.fs build/shaders
 
 #compile .cpp files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | objDirCheck
@@ -68,4 +71,4 @@ docs:
 
 clean:
 	rm $(OBJ_DIR)/* -f
-	rm $(BUILD_DIR)/* -f
+	rm $(BUILD_DIR)/* -f -r
