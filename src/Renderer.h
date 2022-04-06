@@ -12,7 +12,7 @@
 //Files from this project
 #include "Shader.h"
 #include "Line.h"
-
+	
 //Singleton!
 class Renderer
 {

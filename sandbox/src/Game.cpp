@@ -9,7 +9,7 @@ class Game : public App
 
 	void OnStart()
 	{
-		Renderer::SetWindowTitle("My Application");
+		Renderer::SetWindowTitle("Zippy Sandbox");
 		Renderer::SetWindowSize(800, 450);
 	}
 
