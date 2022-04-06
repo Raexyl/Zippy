@@ -30,9 +30,10 @@ Project Aims: -
  - Create rigidbody component
 
 Todo: -
+ - Renderer DrawLine function...
  - See Core.h --> Renderer.h includes should not provide end user access to glad, glfw, Shader.h or Line.h?
 
- - Input should be a namespace.
+
 
 
 Questions: -

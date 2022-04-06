@@ -1,6 +1,6 @@
 
 //Include Zippy
-#include "Core.h"
+#include "Zippy.h"
 
 class Game : public App
 {

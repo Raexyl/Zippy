@@ -2,8 +2,6 @@
 
 //Declare singleton instances! (in this order)
 Renderer Renderer::instance(800, 600, "Loading Zippy..."); //Renderer
-Input Input::instance(0); //Input 
-
 
 int main(void)
 {
