@@ -1,6 +1,12 @@
 # Zippy
 Basic 2D Rendering Engine (Linux Only)
 
+This project uses: -
+ - glad for OpenGL
+ - GLFW3
+ - glm
+ - doxygen for documentation
+
 Engine Architecture:
  - Scene
  	 - GameObjects
@@ -17,9 +23,10 @@ If you would like to compile the example too: -
  - run "make" in the terminal
  - cd into the build directory
  - call "./Sandbox" in the terminal, to run the app.
- - If you want to change the example app, edit Game.cpp as you wish, then rebuild and run as above.
+ - If you want to change the example app, edit Zippy/sandbox/src/Game.cpp as you wish, then rebuild and run as above.
 
-Project Aims: -
+Project Aims: -							Achieved?
+ - Draw straight lines. 				/
  - Draw hollow polygons.
  - Draw filled polygons.
  - Apply textures to shapes.
@@ -30,7 +37,8 @@ Project Aims: -
  - Create rigidbody component
 
 Todo: -
- - Renderer DrawLine function...
+ - Draw Multiple Joined lines (DrawLines() function?)
+ - FPS?
  - See Core.h --> Renderer.h includes should not provide end user access to glad, glfw, Shader.h or Line.h?
 
 

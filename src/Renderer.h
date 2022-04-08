@@ -55,6 +55,7 @@ public:
 
 	//Render things!
 	static void DrawLine(Line* line);
+	static void DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color);
 
 	//Callbacks
 	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -75,6 +76,7 @@ private:
 
 	//Render things!
 	void HiddenDrawLine(Line* line);
+	void HiddenDrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color);
 
 	//Callbacks
 	void hidden_framebuffer_size_callback(GLFWwindow* window, int width, int height);

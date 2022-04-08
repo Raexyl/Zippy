@@ -72,6 +72,8 @@ void Renderer::ClearColor(glm::vec4 color) { Get().HiddenClearColor(color); };
 
 void Renderer::DrawLine(Line* line) { Get().HiddenDrawLine(line); };
 
+void Renderer::DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color) { Get().HiddenDrawLine(start, end, color); };
+
 void Renderer::framebuffer_size_callback(GLFWwindow* window, int width, int height) { Get().hidden_framebuffer_size_callback(window, width, height); };
 
 /* ----- Private *hidden* methods ----- */
@@ -132,6 +134,13 @@ void Renderer::HiddenDrawLine(Line* line)
 	//Bind and draw
     glBindVertexArray(line->GetVAOID());
     glDrawArrays(GL_LINES, 0, 2);
+}
+
+void Renderer::HiddenDrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color)
+{
+	Line* line = new Line(start, end, color);
+	HiddenDrawLine(line);
+	delete line;
 }
 
 

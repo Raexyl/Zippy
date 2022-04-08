@@ -31,9 +31,8 @@ class Game : public App
 		Renderer::ClearColor(clearColor);
 
 		glm::vec2 dims = Renderer::GetScreenDimensions();
-		myLine0.SetPoints(glm::vec2(sinval, cosval)*dims.x/2.0f, Renderer::GetScreenDimensions());
-		myLine0.SetColor(glm::vec4(sinval, cosval, -sinval + 1.0f, 1.0f));
-		Renderer::DrawLine(&myLine0);
+		glm::vec4 color = glm::vec4(1, 1, 1, 1);
+		Renderer::DrawLine(dims, dims * sinval, color);
 
 		Renderer::SwapBuffers();
 	}

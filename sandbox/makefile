@@ -48,7 +48,8 @@ $(PROJECT_NAME): $(OBJ_FILES) | buildDirCheck
 	mv $@ $(BUILD_DIR)/
 	mkdir -p $(BUILD_DIR)/Zippy
 	mkdir -p $(BUILD_DIR)/Zippy/shaders
-	cp ../build/* $(BUILD_DIR)/Zippy -r
+	cp Zippy/libZippy.so $(BUILD_DIR)/Zippy
+	cp Zippy/shaders/ $(BUILD_DIR)/Zippy -r
 
 #compile .cpp files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | objDirCheck updateZippy
@@ -70,6 +71,7 @@ updateZippy:
 	mkdir -p Zippy/includes
 	cp ../src/*.h Zippy/includes
 	cp ../vendor/includes/ -r Zippy
+	cp ../build/* Zippy -r 
 
 clean:
 	rm $(OBJ_DIR)/* -f
