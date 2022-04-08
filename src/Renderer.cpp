@@ -138,9 +138,8 @@ void Renderer::HiddenDrawLine(Line* line)
 
 void Renderer::HiddenDrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color)
 {
-	Line* line = new Line(start, end, color);
-	HiddenDrawLine(line);
-	delete line;
+	Line line = Line(start, end, color);
+	HiddenDrawLine(&line);
 }
 
 

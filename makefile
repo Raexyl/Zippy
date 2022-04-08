@@ -69,6 +69,11 @@ objDirCheck:
 docs:
 	doxygen
 
+#make library, make example(sandbox), and run the example
+full: $(PROJECT_NAME)
+	cd sandbox && make
+	cd sandbox/build && ./Sandbox
+
 clean:
 	rm $(OBJ_DIR)/* -f
 	rm $(BUILD_DIR)/* -f -r
