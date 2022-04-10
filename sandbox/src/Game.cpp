@@ -21,18 +21,16 @@ class Game : public App
 
 	void OnRender()
 	{
-		float sinval = sin(glfwGetTime()) / 2.0f + 0.5f;
-		float cosval = cos(glfwGetTime()) / 2.0f + 0.5f;
-
-		clearColor.x = sin(0.1f * glfwGetTime() * 3.0f) / 2.0f + 0.5f;
-		clearColor.y = sin(0.1f * glfwGetTime() * 7.0f) / 2.0f + 0.5f;
-		clearColor.z = sin(0.1f * glfwGetTime() * 11.0f) / 2.0f + 0.5f;
-
 		Renderer::ClearColor(clearColor);
 
-		glm::vec2 dims = Renderer::GetScreenDimensions();
-		glm::vec4 color = glm::vec4(1, 1, 1, 1);
-		Renderer::DrawLine(dims, dims * sinval, color);
+		float sinval = sin(glfwGetTime()) / 2.0f + 0.5f;
+
+		glm::vec2 points[3] = {	glm::vec2(0.0f, 0.0f),
+								glm::vec2(sinval * 50.0f, 50.0f),
+								Renderer::GetScreenDimensions()
+													};
+
+		Renderer::DrawClosedLoop(points, 3);
 
 		Renderer::SwapBuffers();
 	}

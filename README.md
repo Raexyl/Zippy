@@ -37,9 +37,8 @@ Project Aims: -							Achieved?
  - Create rigidbody component
 
 Todo: -
- - Draw Multiple Joined lines (DrawLines() function?)
+ - Closed loop class?
  - FPS?
- - See Core.h --> Renderer.h includes should not provide end user access to glad, glfw, Shader.h or Line.h?
 
 
 

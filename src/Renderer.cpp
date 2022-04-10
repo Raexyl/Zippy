@@ -74,6 +74,8 @@ void Renderer::DrawLine(Line* line) { Get().HiddenDrawLine(line); };
 
 void Renderer::DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color) { Get().HiddenDrawLine(start, end, color); };
 
+void Renderer::DrawClosedLoop(glm::vec2* points, int numberOfPoints) { Get().HiddenDrawClosedLoop(points, numberOfPoints); };
+
 void Renderer::framebuffer_size_callback(GLFWwindow* window, int width, int height) { Get().hidden_framebuffer_size_callback(window, width, height); };
 
 /* ----- Private *hidden* methods ----- */
@@ -140,6 +142,16 @@ void Renderer::HiddenDrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color)
 {
 	Line line = Line(start, end, color);
 	HiddenDrawLine(&line);
+}
+
+void Renderer::HiddenDrawClosedLoop(glm::vec2* points, int numberOfPoints)
+{
+	for(int i = 0; i < numberOfPoints - 1; i++)
+	{
+		HiddenDrawLine(points[i], points[i+1], glm::vec4(1, 1, 1, 1));
+	}
+
+	HiddenDrawLine(points[numberOfPoints-1], points[0], glm::vec4(1, 1, 1, 1));
 }
 
 
