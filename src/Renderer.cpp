@@ -70,7 +70,7 @@ void Renderer::SwapBuffers() { Get().HiddenSwapBuffers(); };
 
 void Renderer::ClearColor(glm::vec4 color) { Get().HiddenClearColor(color); };
 
-void Renderer::DrawLine(Line* line) { Get().HiddenDrawLine(line); };
+void Renderer::DrawLine(RenderObjects::Line* line) { Get().HiddenDrawLine(line); };
 
 void Renderer::DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color) { Get().HiddenDrawLine(start, end, color); };
 
@@ -118,7 +118,7 @@ void Renderer::HiddenClearColor(glm::vec4 color)
 	glClear(GL_COLOR_BUFFER_BIT); //State-using
 }
 
-void Renderer::HiddenDrawLine(Line* line)
+void Renderer::HiddenDrawLine(RenderObjects::Line* line)
 {
 	//Load shader
 	glUseProgram(m_LineShader.ID);
@@ -140,7 +140,7 @@ void Renderer::HiddenDrawLine(Line* line)
 
 void Renderer::HiddenDrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color)
 {
-	Line line = Line(start, end, color);
+	RenderObjects::Line line = RenderObjects::Line(start, end, color);
 	HiddenDrawLine(&line);
 }
 

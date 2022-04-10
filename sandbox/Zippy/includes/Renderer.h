@@ -54,7 +54,7 @@ public:
 	static void ClearColor(glm::vec4 color);
 
 	//Render things!
-	static void DrawLine(Line* line);
+	static void DrawLine(RenderObjects::Line* line);
 	static void DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color);
 	static void DrawClosedLoop(glm::vec2* points, int numberOfPoints);
 
@@ -76,7 +76,7 @@ private:
 	void HiddenClearColor(glm::vec4 color);
 
 	//Render things!
-	void HiddenDrawLine(Line* line);
+	void HiddenDrawLine(RenderObjects::Line* line);
 	void HiddenDrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color);
 	void HiddenDrawClosedLoop(glm::vec2* points, int numberOfPoints);
 

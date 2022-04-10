@@ -2,11 +2,11 @@
 
 #include <glad/glad.h>
 
-Line::Line()
+RenderObjects::Line::Line()
 {
 }
 
-Line::Line(glm::vec2 start, glm::vec2 end, glm::vec4 color)
+RenderObjects::Line::Line(glm::vec2 start, glm::vec2 end, glm::vec4 color)
 {
 	vertices[0] = start;
 	vertices[1] = end;
@@ -25,23 +25,23 @@ Line::Line(glm::vec2 start, glm::vec2 end, glm::vec4 color)
     glBindVertexArray(0);
 }
 
-Line::~Line() 
+RenderObjects::Line::~Line() 
 {
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
 }
 
-void Line::SetColor(glm::vec4 color)
+void RenderObjects::Line::SetColor(glm::vec4 color)
 {
 	lineColor = color;
 }
 
-glm::vec4 Line::GetColor()
+glm::vec4 RenderObjects::Line::GetColor()
 {
 	return lineColor;
 }
 
-void Line::SetPoints(glm::vec2 start, glm::vec2 end) 
+void RenderObjects::Line::SetPoints(glm::vec2 start, glm::vec2 end) 
 {
 	vertices[0] = start;
 	vertices[1] = end;
@@ -55,7 +55,7 @@ void Line::SetPoints(glm::vec2 start, glm::vec2 end)
     glBindVertexArray(0);
 }
 
-unsigned int Line::GetVAOID()
+unsigned int RenderObjects::Line::GetVAOID()
 {
 	return VBO;
 }

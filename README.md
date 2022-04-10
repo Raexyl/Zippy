@@ -37,10 +37,8 @@ Project Aims: -							Achieved?
  - Create rigidbody component
 
 Todo: -
- - Closed loop class?
+ - Closed loop class? (RenderObjects::ClosedLoop)
  - FPS?
-
-
 
 
 Questions: -

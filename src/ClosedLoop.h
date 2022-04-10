@@ -1,21 +1,21 @@
-#ifndef LINE_H
-#define LINE_H
+#ifndef CLOSEDLOOP_H
+#define CLOSEDLOOP_H
 
 #include <glm/glm.hpp>
 namespace RenderObjects{
-	class Line {
+	class ClosedLoop {
 	    unsigned int VBO, VAO;
 		glm::vec4 lineColor; 	//Works as a uniform
-		glm::vec2 vertices[2]; 	//Goes into VBO
+		std::vector<glm::vec2> vertices; 	//Goes into VBO
 	
 	public:
-		Line();
-	    Line(glm::vec2 start, glm::vec2 end, glm::vec4 color);
-		~Line();
+		ClosedLoop();
+	    ClosedLoop(glm::vec2* points, int numberOfPoints);
+		~ClosedLoop();
 	
 		void SetColor(glm::vec4 color);
 		glm::vec4 GetColor(void);
-		void SetPoints(glm::vec2 start, glm::vec2 end);
+		void SetPoints(glm::vec2* points);
 	
 		unsigned int GetVAOID(void);
 	};

@@ -11,18 +11,19 @@ namespace Logger
 	
 	void Log(const char* string, logLevel importance)
 	{
+		std::cout << "ZIPPY | ";
 		switch(importance)
 		{
 			case note:
 				if(filter != note) { return; };
-				std::cout << "NOTE -- ";
+				std::cout << "NOTE | ";
 				break;
 			case warning:
 				if(filter == error) { return; };
-				std::cout << "WARNING -- ";
+				std::cout << "WARNING | ";
 				break;
 			case error:
-				std::cout << "ERROR -- ";
+				std::cout << "ERROR | ";
 				break;
 		}
 		std::cout << string << std::endl;
