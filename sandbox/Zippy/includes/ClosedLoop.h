@@ -8,16 +8,18 @@ namespace RenderObjects{
 	class ClosedLoop {
 	    unsigned int VBO, VAO;
 		glm::vec4 lineColor; 	//Works as a uniform
-		std::vector<glm::vec2> vertices; 	//Goes into VBO
+		glm::vec2* vertices; 	//Goes into VBO
+		unsigned int noOfPoints;
 	
 	public:
 		ClosedLoop();
-	    ClosedLoop(std::vector<glm::vec2> points);
+	    ClosedLoop(glm::vec2* points, unsigned int numberOfPoints);
 		~ClosedLoop();
 	
 		void SetColor(glm::vec4 color);
 		glm::vec4 GetColor(void);
-		void SetPoints(std::vector<glm::vec2> points);
+		void SetPoints(glm::vec2* points, unsigned int numberOfPoints);
+		unsigned int GetNumberOfPoints(void);
 	
 		unsigned int GetVAOID(void);
 	};

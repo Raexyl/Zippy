@@ -71,6 +71,7 @@ docs:
 
 #make library, make example(sandbox), and run the example
 full: $(PROJECT_NAME)
+	cd sandbox && make clean
 	cd sandbox && make
 	cd sandbox/build && ./Sandbox
 

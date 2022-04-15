@@ -38,6 +38,9 @@ Project Aims: -							Achieved?
 
 Todo: -
  - Closed loop class? (RenderObjects::ClosedLoop)
+	 - I don't think glm::vec2 has the structure I think it does...
+ - I don't need to update the screenSize uniform every time I make a draw call!
+
  - FPS?
 
 

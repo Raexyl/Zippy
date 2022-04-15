@@ -161,7 +161,7 @@ void Renderer::HiddenDrawClosedLoop(RenderObjects::ClosedLoop* closedLoop)
 	
 	//Bind and draw
     glBindVertexArray(closedLoop->GetVAOID());
-    glDrawArrays(GL_LINES, 0, 2);
+    glDrawArrays(GL_LINE_LOOP, 0, closedLoop->GetNumberOfPoints());
 }
 
 
