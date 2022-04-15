@@ -24,12 +24,10 @@ class Game : public App
 
 		float sinval = sin(glfwGetTime()) / 2.0f + 0.5f;
 
-		glm::vec2 points[3] = {	glm::vec2(0.0f, 0.0f),
-								glm::vec2(sinval * 50.0f, 50.0f),
-								Renderer::GetScreenDimensions()
-													};
+		std::vector<glm::vec2> points = {glm::vec2(0.0f, 0.0f), glm::vec2(100.0f, 100.0f)};
+		RenderObjects::ClosedLoop closedLoop = RenderObjects::ClosedLoop(points);
 
-		Renderer::DrawClosedLoop(points, 3);
+		Renderer::DrawClosedLoop(&closedLoop);
 
 		Renderer::SwapBuffers();
 	}

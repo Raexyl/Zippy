@@ -12,6 +12,7 @@
 //Files from this project
 #include "Shader.h"
 #include "Line.h"
+#include "ClosedLoop.h"
 	
 //Singleton!
 class Renderer
@@ -56,7 +57,7 @@ public:
 	//Render things!
 	static void DrawLine(RenderObjects::Line* line);
 	static void DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color);
-	static void DrawClosedLoop(glm::vec2* points, int numberOfPoints);
+	static void DrawClosedLoop(RenderObjects::ClosedLoop* closedLoop);
 
 	//Callbacks
 	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -78,7 +79,7 @@ private:
 	//Render things!
 	void HiddenDrawLine(RenderObjects::Line* line);
 	void HiddenDrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color);
-	void HiddenDrawClosedLoop(glm::vec2* points, int numberOfPoints);
+	void HiddenDrawClosedLoop(RenderObjects::ClosedLoop* closedLoop);
 
 	//Callbacks
 	void hidden_framebuffer_size_callback(GLFWwindow* window, int width, int height);

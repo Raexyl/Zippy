@@ -74,7 +74,7 @@ void Renderer::DrawLine(RenderObjects::Line* line) { Get().HiddenDrawLine(line);
 
 void Renderer::DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color) { Get().HiddenDrawLine(start, end, color); };
 
-void Renderer::DrawClosedLoop(glm::vec2* points, int numberOfPoints) { Get().HiddenDrawClosedLoop(points, numberOfPoints); };
+void Renderer::DrawClosedLoop(RenderObjects::ClosedLoop* closedLoop) { Get().HiddenDrawClosedLoop(closedLoop); };
 
 void Renderer::framebuffer_size_callback(GLFWwindow* window, int width, int height) { Get().hidden_framebuffer_size_callback(window, width, height); };
 
@@ -144,14 +144,24 @@ void Renderer::HiddenDrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color)
 	HiddenDrawLine(&line);
 }
 
-void Renderer::HiddenDrawClosedLoop(glm::vec2* points, int numberOfPoints)
+void Renderer::HiddenDrawClosedLoop(RenderObjects::ClosedLoop* closedLoop)
 {
-	for(int i = 0; i < numberOfPoints - 1; i++)
-	{
-		HiddenDrawLine(points[i], points[i+1], glm::vec4(1, 1, 1, 1));
-	}
+	//Load shader
+	glUseProgram(m_LineShader.ID);
 
-	HiddenDrawLine(points[numberOfPoints-1], points[0], glm::vec4(1, 1, 1, 1));
+	//Uniforms
+	//Update color
+	int vertexColorLocation = glGetUniformLocation(m_LineShader.ID, "ourColor");
+	glm::vec4 ourLineColor = closedLoop->GetColor();
+	glUniform4f(vertexColorLocation, ourLineColor.x, ourLineColor.y, ourLineColor.z, ourLineColor.w);
+
+	//Update screenSize
+	int vertexScreenSizeLocation = glGetUniformLocation(m_LineShader.ID, "screenSize");
+	glUniform2f(vertexScreenSizeLocation, (float)m_Width, (float)m_Height);
+	
+	//Bind and draw
+    glBindVertexArray(closedLoop->GetVAOID());
+    glDrawArrays(GL_LINES, 0, 2);
 }
 
 
