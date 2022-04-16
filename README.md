@@ -27,7 +27,7 @@ If you would like to compile the example too: -
 
 Project Aims: -							Achieved?
  - Draw straight lines. 				/
- - Draw hollow polygons.
+ - Draw hollow polygons.				/
  - Draw filled polygons.
  - Apply textures to shapes.
  - Create gameobject class
@@ -37,8 +37,7 @@ Project Aims: -							Achieved?
  - Create rigidbody component
 
 Todo: -
- - I don't need to update the screenSize uniform every time I make a draw call! Put it in the callback? (Those need sorting out...)
-
+ - Filled polygons -> DrawClosedLoop can have an IsHollow bool argument
  - Core FPS?
 
 

@@ -48,7 +48,7 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
 	m_LineShader = Shader("./Zippy/shaders/lineShader.vs", "./Zippy/shaders/lineShader.fs", &shaderCompilationSuccess);
 	int vertexScreenSizeLocation = glGetUniformLocation(m_LineShader.ID, "screenSize");
 	glUniform2f(vertexScreenSizeLocation, (float)m_Width, (float)m_Height);
-	
+
 	if(!shaderCompilationSuccess) { return; };
 
 	successfulInitialisation = true;
@@ -82,6 +82,8 @@ void Renderer::DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color) { Get()
 void Renderer::DrawClosedLoop(RenderObjects::ClosedLoop* closedLoop) { Get().HiddenDrawClosedLoop(closedLoop); };
 
 void Renderer::DrawClosedLoop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color) { Get().HiddenDrawClosedLoop(points, numberOfPoints, color); };
+
+void Renderer::DrawPolygon(unsigned int numberOfVertices, float radius, glm::vec2 position, glm::vec4 color) { Get().HiddenDrawPolygon(numberOfVertices, radius, position, color); };
 
 void Renderer::framebuffer_size_callback(GLFWwindow* window, int width, int height) { Get().hidden_framebuffer_size_callback(window, width, height); };
 
@@ -167,6 +169,22 @@ void Renderer::HiddenDrawClosedLoop(glm::vec2* points, unsigned int numberOfPoin
 {
 	RenderObjects::ClosedLoop loop(points, numberOfPoints, color);
 	HiddenDrawClosedLoop(&loop);
+}
+
+void Renderer::HiddenDrawPolygon(unsigned int numberOfVertices, float radius,glm::vec2 position, glm::vec4 color)
+{
+	glm::vec2 points[numberOfVertices];
+
+	float angle = 0.0f;
+	float increment = 2.0f * M_PI / numberOfVertices;
+	for(unsigned int i = 0; i < numberOfVertices; i++)
+	{
+		points[i] = glm::vec2(cos(angle), sin(angle)) * radius;
+		points[i] += position;
+		angle += increment;
+	}
+
+	HiddenDrawClosedLoop(points, numberOfVertices, color);
 }
 
 

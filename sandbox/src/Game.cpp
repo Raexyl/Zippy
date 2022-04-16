@@ -27,18 +27,20 @@ class Game : public App
 		glm::vec2 dims = Renderer::GetScreenDimensions();
 
 		//Testing closedloop drawing
-		glm::vec2 points[3] = {	glm::vec2(0.0f, dims.y * cosval),
+		glm::vec2 points[4] = {	glm::vec2(0.0f, dims.y * cosval),
 								glm::vec2(dims.x, dims.y * sinval / 2.0f),
-								glm::vec2(dims.x * sinval, dims.y * cosval)
+								glm::vec2(dims.x * cosval, dims.y * sinval),
+								glm::vec2(dims.x/2.0f, dims.y/2.0f)
 								};
-		//RenderObjects::ClosedLoop closedLoop = RenderObjects::ClosedLoop(points, 3);
-		Renderer::DrawClosedLoop(points, 3, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
+		Renderer::DrawClosedLoop(points, 4, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
 
 		//Drawing a line
 		glm::vec2 start = {0.0f, 0.0f};
 		glm::vec2 end = {100.0f, 200.0f * sinval};
 		glm::vec4 color = {1.0f, 1.0f, 1.0f, 1.0f};
 		Renderer::DrawLine(start, end, color);
+
+		Renderer::DrawPolygon(6, 100.0f, dims/2.0f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 
 		Renderer::SwapBuffers();
 	}
