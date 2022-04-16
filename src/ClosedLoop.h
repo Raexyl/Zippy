@@ -13,7 +13,7 @@ namespace RenderObjects{
 	
 	public:
 		ClosedLoop();
-	    ClosedLoop(glm::vec2* points, unsigned int numberOfPoints);
+	    ClosedLoop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color);
 		~ClosedLoop();
 	
 		void SetColor(glm::vec4 color);

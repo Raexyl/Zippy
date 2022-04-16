@@ -76,6 +76,8 @@ void Renderer::DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color) { Get()
 
 void Renderer::DrawClosedLoop(RenderObjects::ClosedLoop* closedLoop) { Get().HiddenDrawClosedLoop(closedLoop); };
 
+void Renderer::DrawClosedLoop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color) { Get().HiddenDrawClosedLoop(points, numberOfPoints, color); };
+
 void Renderer::framebuffer_size_callback(GLFWwindow* window, int width, int height) { Get().hidden_framebuffer_size_callback(window, width, height); };
 
 /* ----- Private *hidden* methods ----- */
@@ -140,7 +142,7 @@ void Renderer::HiddenDrawLine(RenderObjects::Line* line)
 
 void Renderer::HiddenDrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color)
 {
-	RenderObjects::Line line = RenderObjects::Line(start, end, color);
+	RenderObjects::Line line(start, end, color);
 	HiddenDrawLine(&line);
 }
 
@@ -162,6 +164,12 @@ void Renderer::HiddenDrawClosedLoop(RenderObjects::ClosedLoop* closedLoop)
 	//Bind and draw
     glBindVertexArray(closedLoop->GetVAOID());
     glDrawArrays(GL_LINE_LOOP, 0, closedLoop->GetNumberOfPoints());
+}
+
+void Renderer::HiddenDrawClosedLoop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color)
+{
+	RenderObjects::ClosedLoop loop(points, numberOfPoints, color);
+	HiddenDrawClosedLoop(&loop);
 }
 
 

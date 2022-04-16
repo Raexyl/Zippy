@@ -6,17 +6,17 @@ RenderObjects::ClosedLoop::ClosedLoop()
 {
 }
 
-RenderObjects::ClosedLoop::ClosedLoop(glm::vec2* points, unsigned int numberOfPoints)
+RenderObjects::ClosedLoop::ClosedLoop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color)
 {
 	vertices = points;
 	noOfPoints = numberOfPoints;
-	lineColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	lineColor = color;
 
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(*vertices), vertices, GL_DYNAMIC_DRAW); //Assuming these lines will move
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 2 * numberOfPoints, vertices, GL_DYNAMIC_DRAW); //Assuming these lines will move
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 

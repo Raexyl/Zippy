@@ -58,6 +58,7 @@ public:
 	static void DrawLine(RenderObjects::Line* line);
 	static void DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color);
 	static void DrawClosedLoop(RenderObjects::ClosedLoop* closedLoop);
+	static void DrawClosedLoop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color);
 
 	//Callbacks
 	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -80,6 +81,7 @@ private:
 	void HiddenDrawLine(RenderObjects::Line* line);
 	void HiddenDrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color);
 	void HiddenDrawClosedLoop(RenderObjects::ClosedLoop* closedLoop);
+	void HiddenDrawClosedLoop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color);
 
 	//Callbacks
 	void hidden_framebuffer_size_callback(GLFWwindow* window, int width, int height);

@@ -23,10 +23,16 @@ class Game : public App
 		Renderer::ClearColor(clearColor);
 
 		float sinval = sin(glfwGetTime()) / 2.0f + 0.5f;
+		float cosval = cos(glfwGetTime()) / 2.0f + 0.5f;
+		glm::vec2 dims = Renderer::GetScreenDimensions();
 
-		glm::vec2 points[2] = {glm::vec2(0.0f, 0.0f), glm::vec2(100.0f, 100.0f)};
-		RenderObjects::ClosedLoop closedLoop = RenderObjects::ClosedLoop(points, 2);
-		Renderer::DrawClosedLoop(&closedLoop);
+		//Testing closedloop drawing
+		glm::vec2 points[3] = {	glm::vec2(0.0f, dims.y * cosval),
+								glm::vec2(dims.x, dims.y * sinval / 2.0f),
+								glm::vec2(dims.x * sinval, dims.y * cosval)
+								};
+		//RenderObjects::ClosedLoop closedLoop = RenderObjects::ClosedLoop(points, 3);
+		Renderer::DrawClosedLoop(points, 3, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
 
 		//Drawing a line
 		glm::vec2 start = {0.0f, 0.0f};

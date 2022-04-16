@@ -37,11 +37,9 @@ Project Aims: -							Achieved?
  - Create rigidbody component
 
 Todo: -
- - Closed loop class? (RenderObjects::ClosedLoop)
-	 - I don't think glm::vec2 has the structure I think it does...
- - I don't need to update the screenSize uniform every time I make a draw call!
+ - I don't need to update the screenSize uniform every time I make a draw call! Put it in the callback? (Those need sorting out...)
 
- - FPS?
+ - Core FPS?
 
 
 Questions: -
