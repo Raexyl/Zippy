@@ -43,7 +43,12 @@ Renderer::Renderer(unsigned int width, unsigned int height, const char* windowTi
 	//Compiling shaders...
 	Logger::Log("Compiling shaders...", Logger::logLevel::note);
 	int shaderCompilationSuccess = false;
+
+	//LineShader
 	m_LineShader = Shader("./Zippy/shaders/lineShader.vs", "./Zippy/shaders/lineShader.fs", &shaderCompilationSuccess);
+	int vertexScreenSizeLocation = glGetUniformLocation(m_LineShader.ID, "screenSize");
+	glUniform2f(vertexScreenSizeLocation, (float)m_Width, (float)m_Height);
+	
 	if(!shaderCompilationSuccess) { return; };
 
 	successfulInitialisation = true;
@@ -130,10 +135,6 @@ void Renderer::HiddenDrawLine(RenderObjects::Line* line)
 	int vertexColorLocation = glGetUniformLocation(m_LineShader.ID, "ourColor");
 	glm::vec4 ourLineColor = line->GetColor();
 	glUniform4f(vertexColorLocation, ourLineColor.x, ourLineColor.y, ourLineColor.z, ourLineColor.w);
-
-	//Update screenSize
-	int vertexScreenSizeLocation = glGetUniformLocation(m_LineShader.ID, "screenSize");
-	glUniform2f(vertexScreenSizeLocation, (float)m_Width, (float)m_Height);
 	
 	//Bind and draw
     glBindVertexArray(line->GetVAOID());
@@ -156,10 +157,6 @@ void Renderer::HiddenDrawClosedLoop(RenderObjects::ClosedLoop* closedLoop)
 	int vertexColorLocation = glGetUniformLocation(m_LineShader.ID, "ourColor");
 	glm::vec4 ourLineColor = closedLoop->GetColor();
 	glUniform4f(vertexColorLocation, ourLineColor.x, ourLineColor.y, ourLineColor.z, ourLineColor.w);
-
-	//Update screenSize
-	int vertexScreenSizeLocation = glGetUniformLocation(m_LineShader.ID, "screenSize");
-	glUniform2f(vertexScreenSizeLocation, (float)m_Width, (float)m_Height);
 	
 	//Bind and draw
     glBindVertexArray(closedLoop->GetVAOID());
@@ -178,9 +175,14 @@ void Renderer::HiddenDrawClosedLoop(glm::vec2* points, unsigned int numberOfPoin
 //Callback to allow re-sizing (currently disabled)
 void Renderer::hidden_framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
+	//Update frame size
     glViewport(0, 0, width, height);
 	m_Width = width;
 	m_Height = height;
+
+	//Update screen size in shader uniforms!
+	int vertexScreenSizeLocation = glGetUniformLocation(m_LineShader.ID, "screenSize");
+	glUniform2f(vertexScreenSizeLocation, (float)m_Width, (float)m_Height);
 }
 
 //Report errors
