@@ -1,12 +1,12 @@
-#include "ClosedLoop.h"
+#include "Loop.h"
 
 #include <glad/glad.h>
 
-RenderObjects::ClosedLoop::ClosedLoop()
+RenderObjects::Loop::Loop()
 {
 }
 
-RenderObjects::ClosedLoop::ClosedLoop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color)
+RenderObjects::Loop::Loop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color)
 {
 	vertices = points;
 	noOfPoints = numberOfPoints;
@@ -25,23 +25,23 @@ RenderObjects::ClosedLoop::ClosedLoop(glm::vec2* points, unsigned int numberOfPo
     glBindVertexArray(0);
 }
 
-RenderObjects::ClosedLoop::~ClosedLoop() 
+RenderObjects::Loop::~Loop() 
 {
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
 }
 
-void RenderObjects::ClosedLoop::SetColor(glm::vec4 color)
+void RenderObjects::Loop::SetColor(glm::vec4 color)
 {
 	lineColor = color;
 }
 
-glm::vec4 RenderObjects::ClosedLoop::GetColor(void)
+glm::vec4 RenderObjects::Loop::GetColor(void)
 {
 	return lineColor;
 }
 
-void RenderObjects::ClosedLoop::SetPoints(glm::vec2* points, unsigned int numberOfPoints) 
+void RenderObjects::Loop::SetPoints(glm::vec2* points, unsigned int numberOfPoints) 
 {
 	vertices = points;
 	noOfPoints = numberOfPoints;
@@ -55,12 +55,12 @@ void RenderObjects::ClosedLoop::SetPoints(glm::vec2* points, unsigned int number
     glBindVertexArray(0);
 }
 
-unsigned int RenderObjects::ClosedLoop::GetNumberOfPoints()
+unsigned int RenderObjects::Loop::GetNumberOfPoints()
 {
 	return noOfPoints;
 }
 
-unsigned int RenderObjects::ClosedLoop::GetVAOID()
+unsigned int RenderObjects::Loop::GetVAOID()
 {
 	return VBO;
 }

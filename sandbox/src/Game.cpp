@@ -9,7 +9,7 @@ class Game : public App
 	void OnStart()
 	{
 		Renderer::SetWindowTitle("Zippy Sandbox");
-		Renderer::SetWindowSize(800, 450);
+		Renderer::SetWindowSize(800, 600);
 	}
 
 	void OnUpdate()
@@ -32,7 +32,7 @@ class Game : public App
 								glm::vec2(dims.x * cosval, dims.y * sinval),
 								glm::vec2(dims.x/2.0f, dims.y/2.0f)
 								};
-		Renderer::DrawClosedLoop(points, 4, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
+		Renderer::DrawLoop(points, 4, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
 
 		//Drawing a line
 		glm::vec2 start = {0.0f, 0.0f};
@@ -40,7 +40,15 @@ class Game : public App
 		glm::vec4 color = {1.0f, 1.0f, 1.0f, 1.0f};
 		Renderer::DrawLine(start, end, color);
 
-		Renderer::DrawPolygon(6, 100.0f, dims/2.0f, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+		//Drawing a filled poly
+		glm::vec2 polyPoints[4] = {
+			glm::vec2(0.0f, 0.0f),
+			glm::vec2(100.0f, 0.0f),
+			glm::vec2(500.0f, 500.0f),
+			glm::vec2(0.0f, 50.0f)		
+		};
+
+		Renderer::DrawFilledPolygon(polyPoints, 4, glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 
 		Renderer::SwapBuffers();
 	}

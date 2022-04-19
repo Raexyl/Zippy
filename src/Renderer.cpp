@@ -79,11 +79,11 @@ void Renderer::DrawLine(RenderObjects::Line* line) { Get().HiddenDrawLine(line);
 
 void Renderer::DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color) { Get().HiddenDrawLine(start, end, color); };
 
-void Renderer::DrawClosedLoop(RenderObjects::ClosedLoop* closedLoop) { Get().HiddenDrawClosedLoop(closedLoop); };
+void Renderer::DrawLoop(RenderObjects::Loop* loop) { Get().HiddenDrawLoop(loop); };
 
-void Renderer::DrawClosedLoop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color) { Get().HiddenDrawClosedLoop(points, numberOfPoints, color); };
+void Renderer::DrawLoop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color) { Get().HiddenDrawLoop(points, numberOfPoints, color); };
 
-void Renderer::DrawPolygon(unsigned int numberOfVertices, float radius, glm::vec2 position, glm::vec4 color) { Get().HiddenDrawPolygon(numberOfVertices, radius, position, color); };
+void Renderer::DrawFilledPolygon(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color) { Get().HiddenDrawFilledPolygon(points, numberOfPoints, color); };
 
 void Renderer::framebuffer_size_callback(GLFWwindow* window, int width, int height) { Get().hidden_framebuffer_size_callback(window, width, height); };
 
@@ -112,6 +112,11 @@ void Renderer::HiddenSetWindowTitle(const char* string)
 void Renderer::HiddenSetWindowSize(unsigned int width, unsigned int height)
 {
 	glfwSetWindowSize(m_Window, width, height);
+
+	//Update the screenSize uniform
+	int vertexScreenSizeLocation = glGetUniformLocation(m_LineShader.ID, "screenSize");
+	glUniform2f(vertexScreenSizeLocation, (float)m_Width, (float)m_Height);
+
 }
 
 void Renderer::HiddenSwapBuffers()
@@ -149,7 +154,7 @@ void Renderer::HiddenDrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 color)
 	HiddenDrawLine(&line);
 }
 
-void Renderer::HiddenDrawClosedLoop(RenderObjects::ClosedLoop* closedLoop)
+void Renderer::HiddenDrawLoop(RenderObjects::Loop* loop)
 {
 	//Load shader
 	glUseProgram(m_LineShader.ID);
@@ -157,34 +162,37 @@ void Renderer::HiddenDrawClosedLoop(RenderObjects::ClosedLoop* closedLoop)
 	//Uniforms
 	//Update color
 	int vertexColorLocation = glGetUniformLocation(m_LineShader.ID, "ourColor");
-	glm::vec4 ourLineColor = closedLoop->GetColor();
+	glm::vec4 ourLineColor = loop->GetColor();
 	glUniform4f(vertexColorLocation, ourLineColor.x, ourLineColor.y, ourLineColor.z, ourLineColor.w);
 	
 	//Bind and draw
-    glBindVertexArray(closedLoop->GetVAOID());
-    glDrawArrays(GL_LINE_LOOP, 0, closedLoop->GetNumberOfPoints());
+    glBindVertexArray(loop->GetVAOID());
+    glDrawArrays(GL_LINE_LOOP, 0, loop->GetNumberOfPoints());
 }
 
-void Renderer::HiddenDrawClosedLoop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color)
+void Renderer::HiddenDrawLoop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color)
 {
-	RenderObjects::ClosedLoop loop(points, numberOfPoints, color);
-	HiddenDrawClosedLoop(&loop);
+	RenderObjects::Loop loop(points, numberOfPoints, color);
+	HiddenDrawLoop(&loop);
 }
 
-void Renderer::HiddenDrawPolygon(unsigned int numberOfVertices, float radius,glm::vec2 position, glm::vec4 color)
+//ONLY WORKS FOR CONVEX POLYGONS!
+void Renderer::HiddenDrawFilledPolygon(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color)
 {
-	glm::vec2 points[numberOfVertices];
+	RenderObjects::Loop loop(points, numberOfPoints, color);
 
-	float angle = 0.0f;
-	float increment = 2.0f * M_PI / numberOfVertices;
-	for(unsigned int i = 0; i < numberOfVertices; i++)
-	{
-		points[i] = glm::vec2(cos(angle), sin(angle)) * radius;
-		points[i] += position;
-		angle += increment;
-	}
+	//Load shader
+	glUseProgram(m_LineShader.ID);
 
-	HiddenDrawClosedLoop(points, numberOfVertices, color);
+	//Uniforms
+	//Update color
+	int vertexColorLocation = glGetUniformLocation(m_LineShader.ID, "ourColor");
+	glm::vec4 ourLineColor = loop.GetColor();
+	glUniform4f(vertexColorLocation, ourLineColor.x, ourLineColor.y, ourLineColor.z, ourLineColor.w);
+	
+	//Bind and draw
+    glBindVertexArray(loop.GetVAOID());
+    glDrawArrays(GL_TRIANGLE_FAN, 0, loop.GetNumberOfPoints());
 }
 
 

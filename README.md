@@ -37,7 +37,7 @@ Project Aims: -							Achieved?
  - Create rigidbody component
 
 Todo: -
- - Filled polygons -> DrawClosedLoop can have an IsHollow bool argument
+ - Filled polygons -> DrawClosedLoop can have an IsHollow bool argument?
  - Core FPS?
 
 

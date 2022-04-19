@@ -1,20 +1,20 @@
-#ifndef CLOSEDLOOP_H
-#define CLOSEDLOOP_H
+#ifndef LOOP_H
+#define LOOP_H
 
 #include <glm/glm.hpp>
 #include <vector>
 
 namespace RenderObjects{
-	class ClosedLoop {
+	class Loop {
 	    unsigned int VBO, VAO;
 		glm::vec4 lineColor; 	//Works as a uniform
 		glm::vec2* vertices; 	//Goes into VBO
 		unsigned int noOfPoints;
 	
 	public:
-		ClosedLoop();
-	    ClosedLoop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color);
-		~ClosedLoop();
+		Loop();
+	    Loop(glm::vec2* points, unsigned int numberOfPoints, glm::vec4 color);
+		~Loop();
 	
 		void SetColor(glm::vec4 color);
 		glm::vec4 GetColor(void);
