@@ -28,7 +28,7 @@ If you would like to compile the example too: -
 Project Aims: -							Achieved?
  - Draw straight lines. 				/
  - Draw hollow polygons.				/
- - Draw filled polygons.
+ - Draw filled polygons.				/
  - Apply textures to shapes.
  - Create gameobject class
  - Create component class/interface?
@@ -37,8 +37,7 @@ Project Aims: -							Achieved?
  - Create rigidbody component
 
 Todo: -
- - Filled polygons -> DrawClosedLoop can have an IsHollow bool argument?
- - Core FPS?
+ - Physics?
 
 
 Questions: -
